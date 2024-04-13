@@ -1,10 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://ykhkmcg0j1g8"]
+[gd_scene load_steps=5 format=3 uid="uid://ykhkmcg0j1g8"]
 
 [ext_resource type="Texture2D" uid="uid://b8m4es6sow0pu" path="res://icon.svg" id="1_gom1j"]
+[ext_resource type="Script" path="res://HammerIndicatorUnderlay.gd" id="2_hxctp"]
+[ext_resource type="Script" path="res://HammerIndicatorTarget.gd" id="3_s6hul"]
+[ext_resource type="Script" path="res://HammerIndicatorCurrent.gd" id="4_ld3es"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_gom1j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.396078, 0, 0.192157, 1)
+polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100, 0, 0)
+
+[node name="HammerIndicatorUnderlay" type="Node2D" parent="."]
+script = ExtResource("2_hxctp")
+
+[node name="HammerIndicatorTarget" type="Node2D" parent="."]
+script = ExtResource("3_s6hul")
+
+[node name="HammerIndicatorCurrent2" type="Node2D" parent="."]
+script = ExtResource("4_ld3es")
