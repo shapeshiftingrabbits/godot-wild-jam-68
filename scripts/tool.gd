@@ -2,7 +2,11 @@ extends Node2D
 
 signal done
 
-var index = 0;
+@export var title: String
+@export var description: String
+
+var index = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://fr30h4cxnqx3"]
+
+[ext_resource type="Script" path="res://scenes/set_order.gd" id="1_owx00"]
+
+[node name="IncomingOrder" type="Panel"]
+offset_left = 222.0
+offset_top = 35.0
+offset_right = 391.0
+offset_bottom = 185.0
+script = ExtResource("1_owx00")
+
+[node name="VLayout" type="VFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 169.0
+offset_bottom = 150.0
+grow_vertical = 2
+scale = Vector2(1, 0.993939)
+
+[node name="Title" type="Label" parent="VLayout"]
+layout_mode = 2
+text = "Item Name"
+
+[node name="Description" type="Label" parent="VLayout"]
+layout_mode = 2
+text = "Item description"
+
+[node name="Button" type="Button" parent="VLayout"]
+layout_mode = 2
+text = "I can make this item!"
+
+[connection signal="pressed" from="VLayout/Button" to="." method="_on_button_pressed"]
