@@ -1,19 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/udpate_tool_state.gd" id="1_5d4uv"]
-[ext_resource type="PackedScene" uid="uid://bgfo7ftmvg5ls" path="res://scenes/forgeable_item.tscn" id="1_68127"]
-[ext_resource type="PackedScene" uid="uid://dn73cfdbgxvtr" path="res://scenes/forge_tool.tscn" id="3_a17jm"]
+[ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="2_d3kvp"]
+[ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
 [ext_resource type="PackedScene" uid="uid://fr30h4cxnqx3" path="res://scenes/incoming_order.tscn" id="4_3ebe4"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_5d4uv")
-
-[node name="DoneLabel" type="Label" parent="."]
-offset_left = 497.0
-offset_top = 325.0
-offset_right = 633.0
-offset_bottom = 348.0
-text = "Item is done Yay !"
+current_object = ExtResource("2_d3kvp")
 
 [node name="IncomingOrder" parent="." instance=ExtResource("4_3ebe4")]
 offset_left = 428.0
@@ -21,20 +15,30 @@ offset_top = 314.0
 offset_right = 428.0
 offset_bottom = 314.0
 
-[node name="ForgePanel" type="Panel" parent="."]
-offset_left = 354.0
-offset_top = 287.0
-offset_right = 754.0
-offset_bottom = 437.0
+[node name="Forge" parent="." instance=ExtResource("3_w4lt2")]
 
-[node name="ForgeableItem" parent="ForgePanel" instance=ExtResource("1_68127")]
-position = Vector2(45, 85)
-title = "Shield"
-description = "It's a good shield!"
+[node name="OutgoingOrder" type="Panel" parent="."]
+offset_left = 350.0
+offset_top = 439.0
+offset_right = 750.0
+offset_bottom = 589.0
 
-[node name="Tool" parent="ForgePanel" instance=ExtResource("3_a17jm")]
-position = Vector2(-54, -47)
+[node name="DoneLabel" type="Label" parent="OutgoingOrder"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 38.0
+offset_right = 279.0
+offset_bottom = 61.0
+text = "Item is done Yay !"
+
+[node name="Button" type="Button" parent="OutgoingOrder"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 84.0
+offset_right = 265.0
+offset_bottom = 115.0
+text = "Turn order in!"
 
 [connection signal="accepted" from="IncomingOrder" to="." method="_on_incoming_order_accepted"]
-[connection signal="done" from="ForgePanel/ForgeableItem" to="." method="_on_forgeable_item_done"]
-[connection signal="used" from="ForgePanel/Tool" to="." method="_on_tool_used"]
+[connection signal="forged" from="Forge" to="." method="_on_forge_forged"]
+[connection signal="pressed" from="OutgoingOrder/Button" to="." method="_on_button_pressed"]

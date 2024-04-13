@@ -1,25 +1,22 @@
 extends Node2D
 
-@onready var forgeableItem = $ForgePanel/ForgeableItem
+@export var current_object: ForgeableItemData
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$DoneLabel.hide()
-	$ForgePanel.hide()
-	$IncomingOrder.set_title(forgeableItem.title)
-	$IncomingOrder.set_description(forgeableItem.description)
-	$IncomingOrder.show()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _on_tool_used():
-	forgeableItem.update_visible_sprite()
-
-func _on_forgeable_item_done():
-	$ForgePanel.hide()
-	$DoneLabel.show()
+	set_to_initial_state()
+	
+func set_to_initial_state():
+	$OutgoingOrder.hide()
+	$Forge.hide()
+	$IncomingOrder.show_item(current_object)
 
 func _on_incoming_order_accepted():
 	$IncomingOrder.hide()
-	$ForgePanel.show()
+	$Forge.start_process_with_object(current_object)
+
+func _on_button_pressed():
+	# todo: select next order
+	set_to_initial_state()
+	
+func _on_forge_forged():
+	$OutgoingOrder.show()

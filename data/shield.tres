@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ForgeableItemData" load_steps=3 format=3 uid="uid://cqo6kt10vv5ca"]
+
+[ext_resource type="Script" path="res://scripts/forgeable_item_data.gd" id="1_ktyfm"]
+[ext_resource type="SpriteFrames" uid="uid://c42kyk2o8ijn8" path="res://sprites/forgeable_item.tres" id="2_pd477"]
+
+[resource]
+script = ExtResource("1_ktyfm")
+title = "The Best Shield"
+description = "It is a very good shield"
+spriteFrames = ExtResource("2_pd477")
