@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn73cfdbgxvtr"]
+
+[ext_resource type="Script" path="res://scenes/forge_tool.gd" id="1_bi3tk"]
+[ext_resource type="AudioStream" uid="uid://cbo18v0a8i7qe" path="res://assets/audio/impactMetal_medium_000.ogg" id="1_xuxoy"]
+[ext_resource type="AudioStream" uid="uid://ish4hf4dkf2k" path="res://assets/audio/impactMetal_medium_001.ogg" id="3_mgvqn"]
+[ext_resource type="AudioStream" uid="uid://ccv324m81iqkt" path="res://assets/audio/impactMetal_medium_002.ogg" id="4_wqiuu"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bpfbx"]
+streams_count = 3
+stream_0/stream = ExtResource("1_xuxoy")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_mgvqn")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_wqiuu")
+stream_2/weight = 1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bi3tk")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 272.0
+offset_top = 124.0
+offset_right = 403.0
+offset_bottom = 155.0
+text = "hit the hammer"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bpfbx")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
