@@ -54,7 +54,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Tool" type="Node2D"]
+[node name="ForgeableItem" type="Node2D"]
 script = ExtResource("1_p4in1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

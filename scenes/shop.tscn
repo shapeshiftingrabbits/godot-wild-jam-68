@@ -1,15 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/udpate_tool_state.gd" id="1_5d4uv"]
-[ext_resource type="PackedScene" uid="uid://bgfo7ftmvg5ls" path="res://scenes/shield.tscn" id="1_68127"]
+[ext_resource type="PackedScene" uid="uid://bgfo7ftmvg5ls" path="res://scenes/forgeable_item.tscn" id="1_68127"]
 [ext_resource type="PackedScene" uid="uid://dn73cfdbgxvtr" path="res://scenes/forge_tool.tscn" id="3_a17jm"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_5d4uv")
 
-[node name="TargetObjectMaking" parent="." instance=ExtResource("1_68127")]
+[node name="ForgeableItem" parent="." instance=ExtResource("1_68127")]
 position = Vector2(99, 132)
 
 [node name="Tool" parent="." instance=ExtResource("3_a17jm")]
 
+[node name="DoneLabel" type="Label" parent="."]
+offset_left = 151.0
+offset_top = 79.0
+offset_right = 287.0
+offset_bottom = 102.0
+text = "Item is done Yay !"
+
+[connection signal="done" from="ForgeableItem" to="." method="_on_forgeable_item_done"]
 [connection signal="used" from="Tool" to="." method="_on_tool_used"]
