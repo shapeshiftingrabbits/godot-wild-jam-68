@@ -5,6 +5,7 @@ signal hit
 @export var difficulty: int = 5
 
 var time: float = 0
+var interactible = true
 
 func _process(delta):
 	time += delta
@@ -13,7 +14,7 @@ func _process(delta):
 	%Target.difficulty = difficulty
 
 func _input(event):
-	if event is InputEvent:
+	if interactible && event is InputEvent:
 		if event.is_action_pressed("minigame_interact"):
 			if in_target_time():
 				hit.emit()
@@ -28,9 +29,9 @@ func in_target_time():
 	return normalized_time >= start_time && normalized_time <= end_time
 
 func enable():
-	set_process_mode(PROCESS_MODE_INHERIT)
+	interactible = true
 	show()
 
 func disable():
+	interactible = false
 	hide()
-	set_process_mode(PROCESS_MODE_DISABLED)
