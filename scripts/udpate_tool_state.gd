@@ -11,7 +11,7 @@ func _ready():
 func set_to_initial_state():
 	$ReputationLabel.text = "Reputation: " + str(reputation)
 	$OutgoingOrder.hide()
-	$Forge.hide()
+	$Forge.disable()
 	$IncomingOrder.show_item(current_object)
 
 func _on_incoming_order_accepted():
