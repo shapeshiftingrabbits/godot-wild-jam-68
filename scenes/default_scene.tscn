@@ -1,27 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://ykhkmcg0j1g8"]
+[gd_scene load_steps=9 format=3 uid="uid://ykhkmcg0j1g8"]
 
-[ext_resource type="Texture2D" uid="uid://b8m4es6sow0pu" path="res://icon.svg" id="1_vijgq"]
-[ext_resource type="Script" path="res://scripts/HammerIndicatorUnderlay.gd" id="2_mao3e"]
-[ext_resource type="Script" path="res://scripts/HammerIndicatorTarget.gd" id="3_oad2p"]
-[ext_resource type="Script" path="res://scripts/HammerIndicatorCurrent.gd" id="4_upeu7"]
+[ext_resource type="Script" path="res://scripts/hammer_indicator.gd" id="1_unvey"]
+[ext_resource type="Script" path="res://scripts/hammer_indicator_target.gd" id="3_oad2p"]
+[ext_resource type="Script" path="res://scripts/hammer_indicator_current.gd" id="4_upeu7"]
+[ext_resource type="AudioStream" uid="uid://cbo18v0a8i7qe" path="res://assets/audio/impactMetal_medium_000.ogg" id="5_4rqhw"]
+[ext_resource type="Script" path="res://scripts/hammer_indicator_track.gd" id="5_xs18s"]
+[ext_resource type="AudioStream" uid="uid://ish4hf4dkf2k" path="res://assets/audio/impactMetal_medium_001.ogg" id="6_luhd0"]
+[ext_resource type="AudioStream" uid="uid://ccv324m81iqkt" path="res://assets/audio/impactMetal_medium_002.ogg" id="7_7j0or"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vcxv0"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("5_4rqhw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_luhd0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_7j0or")
+stream_2/weight = 1.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_vijgq")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.396078, 0, 0.192157, 1)
-polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100, 0, 0)
+[node name="HammerIndicator" type="Node" parent="."]
+script = ExtResource("1_unvey")
 
-[node name="HammerIndicatorUnderlay" type="Node2D" parent="."]
-script = ExtResource("2_mao3e")
+[node name="HammerIndicatorTrack" type="Node2D" parent="HammerIndicator"]
+script = ExtResource("5_xs18s")
 
-[node name="HammerIndicatorTarget" type="Node2D" parent="."]
+[node name="HammerIndicatorTarget" type="Node2D" parent="HammerIndicator"]
 script = ExtResource("3_oad2p")
 
-[node name="HammerIndicatorCurrent2" type="Node2D" parent="."]
+[node name="HammerIndicatorCurrent" type="Node2D" parent="HammerIndicator"]
 script = ExtResource("4_upeu7")
+
+[node name="HammerIndicatorAudioStreamPlayer" type="AudioStreamPlayer" parent="HammerIndicator"]
+stream = SubResource("AudioStreamRandomizer_vcxv0")
+bus = &"Hammer"
+
+[connection signal="hit" from="HammerIndicator" to="HammerIndicator/HammerIndicatorAudioStreamPlayer" method="play" binds= [0.0]]

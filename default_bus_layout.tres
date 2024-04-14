@@ -1,0 +1,24 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://deerb0ujjv3ch"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_fxb0d"]
+resource_name = "Reverb"
+room_size = 0.2
+damping = 0.1
+spread = 0.5
+wet = 0.3
+
+[resource]
+bus/1/name = &"SFX"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"Hammer"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"SFX"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_fxb0d")
+bus/2/effect/0/enabled = true
