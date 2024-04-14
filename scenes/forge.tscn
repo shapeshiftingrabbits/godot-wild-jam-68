@@ -15,7 +15,8 @@ script = ExtResource("1_b7xdo")
 position = Vector2(45, 85)
 
 [node name="Tool" parent="." instance=ExtResource("2_gmspo")]
-position = Vector2(-54, -47)
+position = Vector2(320, 75)
+scale = Vector2(0.8, 0.8)
 
 [connection signal="done" from="ForgeableItem" to="." method="_on_forgeable_item_done"]
-[connection signal="used" from="Tool" to="." method="_on_tool_used"]
+[connection signal="hit" from="Tool" to="." method="_on_tool_hit"]

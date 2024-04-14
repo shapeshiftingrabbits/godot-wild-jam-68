@@ -1,11 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn73cfdbgxvtr"]
+[gd_scene load_steps=9 format=3 uid="uid://dn73cfdbgxvtr"]
 
 [ext_resource type="Script" path="res://scenes/forge_tool.gd" id="1_bi3tk"]
 [ext_resource type="AudioStream" uid="uid://cbo18v0a8i7qe" path="res://assets/audio/impactMetal_medium_000.ogg" id="1_xuxoy"]
+[ext_resource type="Script" path="res://scripts/hammer_indicator_track.gd" id="2_lko2k"]
+[ext_resource type="Script" path="res://scripts/hammer_indicator_target.gd" id="3_juhck"]
 [ext_resource type="AudioStream" uid="uid://ish4hf4dkf2k" path="res://assets/audio/impactMetal_medium_001.ogg" id="3_mgvqn"]
+[ext_resource type="Script" path="res://scripts/hammer_indicator_current.gd" id="4_dclto"]
 [ext_resource type="AudioStream" uid="uid://ccv324m81iqkt" path="res://assets/audio/impactMetal_medium_002.ogg" id="4_wqiuu"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bpfbx"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1ey2p"]
 streams_count = 3
 stream_0/stream = ExtResource("1_xuxoy")
 stream_0/weight = 1.0
@@ -17,14 +20,22 @@ stream_2/weight = 1.0
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_bi3tk")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 272.0
-offset_top = 124.0
-offset_right = 403.0
-offset_bottom = 155.0
-text = "hit the hammer"
+[node name="Track" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_lko2k")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_bpfbx")
+[node name="Target" type="Node2D" parent="."]
+unique_name_in_owner = true
+rotation = 4.71239
+script = ExtResource("3_juhck")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Current" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_dclto")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_1ey2p")
+bus = &"Hammer"
+
+[connection signal="hit" from="." to="Audio" method="play" binds= [0.0]]
