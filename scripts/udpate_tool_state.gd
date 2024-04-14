@@ -1,8 +1,12 @@
 extends Node2D
 
 @export var current_object: ForgeableItemData
+
+var reputation: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$ReputationLabel.text = "Reputation: " + str(reputation)
 	set_to_initial_state()
 	
 func set_to_initial_state():

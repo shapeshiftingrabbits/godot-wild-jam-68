@@ -10,6 +10,11 @@
 script = ExtResource("1_5d4uv")
 current_object = ExtResource("2_d3kvp")
 
+[node name="ReputationLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Reputation:"
+
 [node name="IncomingOrder" parent="." instance=ExtResource("4_3ebe4")]
 offset_left = 428.0
 offset_top = 314.0
