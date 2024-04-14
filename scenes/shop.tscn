@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c010sfubpw1uv"]
 
-[ext_resource type="Script" path="res://scripts/udpate_tool_state.gd" id="1_5d4uv"]
+[ext_resource type="Script" path="res://scripts/update_tool_state.gd" id="1_5d4uv"]
 [ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="2_d3kvp"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
 [ext_resource type="PackedScene" uid="uid://fr30h4cxnqx3" path="res://scenes/incoming_order.tscn" id="4_3ebe4"]
-[ext_resource type="PackedScene" path="res://scenes/outgoing_order.tscn" id="5_q02lg"]
+[ext_resource type="PackedScene" uid="uid://85wqf6pegevs" path="res://scenes/outgoing_order.tscn" id="5_q02lg"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_5d4uv")
