@@ -7,6 +7,7 @@ signal forged
 func start_process_with_object(current_object: ForgeableItemData):
 	set_process_mode(PROCESS_MODE_INHERIT)
 	forgeable_item.set_to_initial_state(current_object.spriteFrames)
+	$Tool.reset()
 	$Tool.enable()
 	show()
 

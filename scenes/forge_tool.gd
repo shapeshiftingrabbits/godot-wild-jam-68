@@ -15,9 +15,8 @@ func _process(delta):
 
 func _input(event):
 	if interactible && event is InputEvent:
-		if event.is_action_pressed("minigame_interact"):
-			if in_target_time():
-				hit.emit()
+		if event.is_action_pressed("minigame_interact") && in_target_time():
+			hit.emit()
 
 func in_target_time():
 	var target_time_duration = loop_time_seconds / difficulty
@@ -35,3 +34,6 @@ func enable():
 func disable():
 	interactible = false
 	hide()
+
+func reset():
+	time = 0.0
