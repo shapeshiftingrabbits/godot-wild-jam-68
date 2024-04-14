@@ -16,6 +16,7 @@ func _process(delta):
 	%Current.rotation = fmod(time / loop_time_seconds, 1.0) * TAU
 	# TODO: probably should be elsewhere
 	%Target.difficulty = difficulty
+	%Target.rotation = TAU * offset_ratio()
 
 	if fmod(time, loop_time_seconds) < mod_before:
 		hit_this_loop = false
@@ -27,9 +28,13 @@ func _input(event):
 				hit_this_loop = true
 				hit.emit()
 
+func offset_ratio():
+	var is_tock = floori(time / loop_time_seconds) % 2
+	return 0.7 if is_tock else 0.8
+
 func in_target_time():
 	var target_time_duration = loop_time_seconds / difficulty
-	var start_time = loop_time_seconds * 3 / 4 - target_time_duration / 2
+	var start_time = loop_time_seconds * offset_ratio() - target_time_duration / 2
 	var end_time = start_time + target_time_duration
 
 	var normalized_time = fmod(time, loop_time_seconds)
