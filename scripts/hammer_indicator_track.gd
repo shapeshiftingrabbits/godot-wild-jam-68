@@ -33,11 +33,6 @@ extends Node2D
 		antialias = value
 		queue_redraw()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	queue_redraw()
-
 func _draw():
 	draw_arc(Vector2(0, 0), radius, 0, TAU, roundi(radius), Color.YELLOW, thickness + stroke_width, antialias)
 	draw_arc(Vector2(0, 0), radius, 0, TAU, roundi(radius), Color.RED, thickness, antialias)

@@ -4,23 +4,14 @@ signal hit
 @export var loop_time_seconds: float = 1.0
 @export var difficulty: int = 5
 
-@onready var current: Node2D = get_node("HammerIndicatorCurrent")
-@onready var target: Node2D = get_node("HammerIndicatorTarget")
-
 var time: float = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
 
-	current.rotation = fmod(time / loop_time_seconds, 1.0) * TAU
-	target.rotation = TAU * 3 / 4
-	target.difficulty = difficulty
+	%Current.rotation = fmod(time / loop_time_seconds, 1.0) * TAU
+	%Target.rotation = TAU * 3 / 4
+	%Target.difficulty = difficulty
 
 func _input(event):
 	if event is InputEvent:

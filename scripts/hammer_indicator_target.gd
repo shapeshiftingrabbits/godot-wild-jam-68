@@ -27,10 +27,6 @@ extends Node2D
 		difficulty = value
 		queue_redraw()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	queue_redraw()
-
 func _draw():
 	var width = TAU / difficulty
 

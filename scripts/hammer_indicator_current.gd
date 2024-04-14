@@ -22,10 +22,6 @@ extends Node2D
 		antialias = value
 		queue_redraw()
 
-
-func _process(_delta):
-	queue_redraw()
-
 func _draw():
 	var width = TAU / 64
 
