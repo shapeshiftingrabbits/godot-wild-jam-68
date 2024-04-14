@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://85wqf6pegevs"]
+
+[node name="OutgoingOrder" type="Panel"]
+offset_left = 350.0
+offset_top = 439.0
+offset_right = 750.0
+offset_bottom = 589.0
+
+[node name="DoneLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 38.0
+offset_right = 279.0
+offset_bottom = 61.0
+text = "Item is done Yay !"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 84.0
+offset_right = 265.0
+offset_bottom = 115.0
+text = "Turn order in!"
