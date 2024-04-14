@@ -22,3 +22,4 @@ offset_bottom = 314.0
 
 [connection signal="accepted" from="IncomingOrder" to="." method="_on_incoming_order_accepted"]
 [connection signal="forged" from="Forge" to="." method="_on_forge_forged"]
+[connection signal="turned_in" from="OutgoingOrder" to="." method="_on_outgoing_order_turned_in"]
