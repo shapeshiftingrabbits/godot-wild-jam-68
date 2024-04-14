@@ -10,7 +10,6 @@ func _process(delta):
 	time += delta
 
 	%Current.rotation = fmod(time / loop_time_seconds, 1.0) * TAU
-	%Target.rotation = TAU * 3 / 4
 	%Target.difficulty = difficulty
 
 func _input(event):

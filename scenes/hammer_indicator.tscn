@@ -26,6 +26,7 @@ script = ExtResource("2_il07q")
 
 [node name="Target" type="Node2D" parent="."]
 unique_name_in_owner = true
+rotation = 4.71239
 script = ExtResource("3_y5pld")
 
 [node name="Current" type="Node2D" parent="."]
