@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 signal hit
 
 @export var loop_time_seconds: float = 1.0
@@ -26,3 +26,11 @@ func in_target_time():
 	var normalized_time = fmod(time, loop_time_seconds)
 
 	return normalized_time >= start_time && normalized_time <= end_time
+
+func enable():
+	set_process_mode(PROCESS_MODE_INHERIT)
+	show()
+
+func disable():
+	hide()
+	set_process_mode(PROCESS_MODE_DISABLED)
