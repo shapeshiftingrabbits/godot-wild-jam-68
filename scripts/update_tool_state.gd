@@ -15,7 +15,6 @@ func set_to_initial_state():
 	$IncomingOrder.show_item(current_object)
 
 func _on_incoming_order_accepted():
-	$IncomingOrder.hide()
 	$Forge.start_process_with_object(current_object)
 
 func _on_forge_forged():

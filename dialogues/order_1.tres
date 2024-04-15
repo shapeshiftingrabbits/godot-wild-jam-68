@@ -163,7 +163,7 @@ The catacombs are full of agile enemies who don't necessarily hit that hard.",
 variables = {
 "challenge_capacity": {
 "type": 2,
-"value": 41.0
+"value": 1.0
 }
 }
 comments = Array[String]([])

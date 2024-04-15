@@ -1,12 +1,9 @@
-extends Panel
+extends Control
 
 signal accepted
 
 func show_item ( item: ForgeableItemData):
-	$VLayout/Title.text = item.title
-	$VLayout/Description.text = item.description
-	show()
+	$DialogueBox.start("1")
 
-func _on_button_pressed():
+func _on_dialogue_box_dialogue_ended():
 	accepted.emit()
-	hide()
