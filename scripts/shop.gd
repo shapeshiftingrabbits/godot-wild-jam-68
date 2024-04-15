@@ -1,9 +1,12 @@
 extends Node2D
 
 @export var current_object: ForgeableItemData
+@export var missions: Array[Mission]
 
 var reputation: int = 0
 @onready var dialogue_box: DialogueBox = $IncomingOrder/DialogueBox
+
+const run_mission = preload("res://scripts/commands/run_mission.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,5 +26,14 @@ func _on_forge_forged():
 
 func _on_outgoing_order_turned_in(reputation_gain):
 	reputation += reputation_gain
+
+	var mission_name = dialogue_box.get_variable("{{mission_name}}")
+	print(mission_name)
+	var mission = missions.filter(func(item): return item.name == mission_name)
+	var challenge_capacity = dialogue_box.get_variable("{{challenge_capacity}}")
+
+	var result = run_mission.do(challenge_capacity, mission.challenges)
+
+	print(result)
 	# todo: select next order
 	set_to_initial_state()
