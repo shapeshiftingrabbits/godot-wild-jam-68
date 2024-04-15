@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bll36o3xcg7w5"]
+
+[ext_resource type="Texture2D" uid="uid://b8m4es6sow0pu" path="res://icon.svg" id="1_5ysvp"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_i8lop"]
+
+[resource]
+script = ExtResource("1_i8lop")
+name = "Bob"
+image = ExtResource("1_5ysvp")
+color = Color(1, 1, 1, 1)

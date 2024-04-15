@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dfuhyrlqc0q1n"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_v00ij"]
+
+[resource]
+script = ExtResource("1_v00ij")
+starts = {
+"1": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(83, 157),
+"start_id": "1"
+},
+"1_1": {
+"dialogue": "I'm about to go raid the Catacombs to find Karl, but I need some armour! My budget is 200G.
+The catacombs are full of agile enemies who don't necessarily hit that hard.",
+"offset": Vector2(420, 80),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": "Light Armour"
+},
+1: {
+"condition": {},
+"link": &"4_2",
+"text": "Medium Armour"
+},
+2: {
+"condition": {},
+"link": &"4_3",
+"text": "Heavy Armour"
+}
+},
+"size": Vector2(382, 446),
+"speaker": 0
+},
+"4_1": {
+"link": "END",
+"offset": Vector2(980, 320),
+"type": 1,
+"value": "10",
+"variable": "challenge_capacity"
+},
+"4_2": {
+"link": "END",
+"offset": Vector2(980, 420),
+"type": 1,
+"value": "5",
+"variable": "challenge_capacity"
+},
+"4_3": {
+"link": "END",
+"offset": Vector2(980, 520),
+"type": 1,
+"value": "1",
+"variable": "challenge_capacity"
+}
+}
+variables = {
+"challenge_capacity": {
+"type": 2,
+"value": 1.0
+}
+}
+comments = Array[String]([])
+strays = Array[String]([])
+characters = "res://dialogues/adventurer_list_tuto.tres"
