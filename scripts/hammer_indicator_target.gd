@@ -22,12 +22,14 @@ extends Node2D
 		antialias = value
 		queue_redraw()
 
-@export var difficulty: int = 6:
+@export_range(0.0, 1.0) var length = 0.1:
 	set(value):
-		difficulty = value
+		length = value
 		queue_redraw()
 
 func _draw():
-	var width = TAU / difficulty
+	var total_arc = TAU * length
+	var start = -total_arc / 2
+	var end = total_arc / 2
 
-	draw_arc(Vector2(0, 0), radius, TAU - (width / 2), TAU + width / 2, roundi(radius), fill_color, thickness, antialias)
+	draw_arc(Vector2(0, 0), radius, start, end, roundi(radius), fill_color, thickness, antialias)

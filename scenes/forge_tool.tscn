@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn73cfdbgxvtr"]
+[gd_scene load_steps=15 format=3 uid="uid://dn73cfdbgxvtr"]
 
 [ext_resource type="Script" path="res://scenes/forge_tool.gd" id="1_bi3tk"]
 [ext_resource type="AudioStream" uid="uid://cbo18v0a8i7qe" path="res://assets/audio/impactMetal_medium_000.ogg" id="1_xuxoy"]
@@ -6,7 +6,14 @@
 [ext_resource type="Script" path="res://scripts/hammer_indicator_target.gd" id="3_juhck"]
 [ext_resource type="AudioStream" uid="uid://ish4hf4dkf2k" path="res://assets/audio/impactMetal_medium_001.ogg" id="3_mgvqn"]
 [ext_resource type="Script" path="res://scripts/hammer_indicator_current.gd" id="4_dclto"]
+[ext_resource type="Texture2D" uid="uid://cvhcg2sv38511" path="res://assets/game_icons_white1x.png" id="4_f4ibi"]
 [ext_resource type="AudioStream" uid="uid://ccv324m81iqkt" path="res://assets/audio/impactMetal_medium_002.ogg" id="4_wqiuu"]
+[ext_resource type="AudioStream" uid="uid://4g0uhg3us1yg" path="res://assets/audio/impactBell_heavy_003.ogg" id="8_ftyy0"]
+[ext_resource type="AudioStream" uid="uid://bxga8aeyhsesx" path="res://assets/audio/error_002.ogg" id="9_yop45"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trf48"]
+atlas = ExtResource("4_f4ibi")
+region = Rect2(100, 300, 50, 50)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1ey2p"]
 streams_count = 3
@@ -17,6 +24,16 @@ stream_1/weight = 1.0
 stream_2/stream = ExtResource("4_wqiuu")
 stream_2/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x2wje"]
+streams_count = 1
+stream_0/stream = ExtResource("8_ftyy0")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7mn0v"]
+streams_count = 1
+stream_0/stream = ExtResource("9_yop45")
+stream_0/weight = 1.0
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_bi3tk")
 
@@ -26,16 +43,34 @@ script = ExtResource("2_lko2k")
 
 [node name="Target" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
 rotation = 4.71239
 script = ExtResource("3_juhck")
+length = 0.2
+
+[node name="Indicator" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("AtlasTexture_trf48")
 
 [node name="Current" type="Node2D" parent="."]
 unique_name_in_owner = true
+z_index = 1
 script = ExtResource("4_dclto")
 
-[node name="Audio" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
+[node name="HitAudio" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_1ey2p")
 bus = &"Hammer"
 
-[connection signal="hit" from="." to="Audio" method="play" binds= [0.0]]
+[node name="MissAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_x2wje")
+bus = &"Errors"
+
+[node name="RejectedAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7mn0v")
+volume_db = -8.0
+bus = &"Errors"
+
+[connection signal="hit" from="." to="HitAudio" method="play" binds= [0.0]]
+[connection signal="hit_ready_changed" from="." to="." method="_on_hit_ready_changed"]
+[connection signal="missed" from="." to="MissAudio" method="play" binds= [0.0]]
+[connection signal="rejected" from="." to="RejectedAudio" method="play" binds= [0.0]]
