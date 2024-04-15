@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://85wqf6pegevs"]
 
-[ext_resource type="Script" path="res://scenes/outgoing_order.gd" id="1_d5fcv"]
+[ext_resource type="Script" path="res://scripts/outgoing_order.gd" id="1_d5fcv"]
 
 [node name="OutgoingOrder" type="Panel"]
 offset_left = 350.0

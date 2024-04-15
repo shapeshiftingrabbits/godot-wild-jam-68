@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4y3fbn5as1i3"]
 
-[ext_resource type="Script" path="res://scenes/forge.gd" id="1_b7xdo"]
+[ext_resource type="Script" path="res://scripts/forge.gd" id="1_b7xdo"]
 [ext_resource type="PackedScene" uid="uid://bgfo7ftmvg5ls" path="res://scenes/forgeable_item.tscn" id="1_q4o5u"]
 [ext_resource type="PackedScene" uid="uid://dn73cfdbgxvtr" path="res://scenes/forge_tool.tscn" id="2_gmspo"]
 

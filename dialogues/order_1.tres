@@ -47,7 +47,7 @@ The catacombs are full of agile enemies who don't necessarily hit that hard.",
 "text": ""
 }
 },
-"size": Vector2(300, 242),
+"size": Vector2(300, 275),
 "speaker": 0
 },
 "1_3": {
@@ -164,6 +164,10 @@ variables = {
 "challenge_capacity": {
 "type": 2,
 "value": 1.0
+},
+"mission_name": {
+"type": 4,
+"value": "catacombs"
 }
 }
 comments = Array[String]([])
