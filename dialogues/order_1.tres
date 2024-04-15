@@ -16,7 +16,7 @@ nodes = {
 "1_1": {
 "dialogue": "I'm about to go raid the Catacombs to find Karl, but I need some armour! My budget is 200G.
 The catacombs are full of agile enemies who don't necessarily hit that hard.",
-"offset": Vector2(420, 80),
+"offset": Vector2(440, 80),
 "options": {
 0: {
 "condition": {},
@@ -37,32 +37,133 @@ The catacombs are full of agile enemies who don't necessarily hit that hard.",
 "size": Vector2(382, 446),
 "speaker": 0
 },
-"4_1": {
+"1_2": {
+"dialogue": "thanks",
+"offset": Vector2(3560, 80),
+"options": {
+0: {
+"condition": {},
 "link": "END",
-"offset": Vector2(980, 320),
+"text": ""
+}
+},
+"size": Vector2(300, 242),
+"speaker": 0
+},
+"1_3": {
+"dialogue": "Do you think you can ajust the armor for my condition? My left arm got snatched by a blob.",
+"offset": Vector2(1460, 80),
+"options": {
+0: {
+"condition": {},
+"link": &"4_6",
+"text": "I can add a shield in place of the arm spot."
+},
+1: {
+"condition": {},
+"link": &"4_4",
+"text": "I can add a net launcher to trap enemies."
+},
+2: {
+"condition": {},
+"link": &"4_5",
+"text": "I can add a hook."
+}
+},
+"size": Vector2(459.72, 396),
+"speaker": 0
+},
+"1_4": {
+"dialogue": "I am a bit nervous, this is my first dungeon...",
+"offset": Vector2(2500, 40),
+"options": {
+0: {
+"condition": {},
+"link": &"4_8",
+"text": "I can add an encouragements spell to the armour."
+},
+1: {
+"condition": {},
+"link": &"4_9",
+"text": "I can a night light to the armour to keep the dark away."
+},
+2: {
+"condition": {},
+"link": &"4_7",
+"text": "I can make the armour look scary so enemies are nervous too."
+}
+},
+"size": Vector2(459.72, 396),
+"speaker": 0
+},
+"4_1": {
+"link": &"1_3",
+"offset": Vector2(980, 160),
 "type": 1,
 "value": "10",
 "variable": "challenge_capacity"
 },
 "4_2": {
-"link": "END",
-"offset": Vector2(980, 420),
+"link": &"1_3",
+"offset": Vector2(980, 280),
 "type": 1,
 "value": "5",
 "variable": "challenge_capacity"
 },
 "4_3": {
-"link": "END",
-"offset": Vector2(980, 520),
+"link": &"1_3",
+"offset": Vector2(980, 400),
 "type": 1,
 "value": "1",
+"variable": "challenge_capacity"
+},
+"4_4": {
+"link": &"1_4",
+"offset": Vector2(2080, 140),
+"type": 1,
+"value": "10",
+"variable": "challenge_capacity"
+},
+"4_5": {
+"link": &"1_4",
+"offset": Vector2(2060, 280),
+"type": 1,
+"value": "5",
+"variable": "challenge_capacity"
+},
+"4_6": {
+"link": &"1_4",
+"offset": Vector2(2080, 40),
+"type": 1,
+"value": "1",
+"variable": "challenge_capacity"
+},
+"4_7": {
+"link": &"1_2",
+"offset": Vector2(3060, 460),
+"type": 1,
+"value": "1",
+"variable": "challenge_capacity"
+},
+"4_8": {
+"link": &"1_2",
+"offset": Vector2(3060, 220),
+"type": 1,
+"value": "10",
+"variable": "challenge_capacity"
+},
+"4_9": {
+"link": &"1_2",
+"offset": Vector2(3060, 340),
+"type": 1,
+"value": "5",
 "variable": "challenge_capacity"
 }
 }
 variables = {
 "challenge_capacity": {
 "type": 2,
-"value": 1.0
+"value": 41.0
 }
 }
 comments = Array[String]([])
