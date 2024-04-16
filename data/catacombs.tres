@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Mission" load_steps=3 format=3 uid="uid://cxrotaaabbgs"]
 
-[ext_resource type="Resource" uid="uid://du4w2ra7prg1b" path="res://data/easy_challenge_money.tres" id="1_l3dlr"]
+[ext_resource type="Resource" path="res://data/easy_challenge_money.tres" id="1_l3dlr"]
 [ext_resource type="Script" path="res://scripts/data_scripts/mission_data.gd" id="1_t3i0f"]
 
 [resource]

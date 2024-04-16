@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dbbfnurrnfoem"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_dud8j"]
+
+[resource]
+script = ExtResource("1_dud8j")
+starts = {
+"start_reward": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(0, 200),
+"start_id": "start_reward"
+},
+"1_1": {
+"dialogue": "Hey I'm back!
+The mission went {{mission_grade}}. To thank you, I am sharing some of the spoils.
+{{reward}}",
+"offset": Vector2(460, 180),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(498, 376),
+"speaker": -1
+}
+}
+variables = {
+"mission_grade": {
+"type": 4,
+"value": ""
+},
+"reward": {
+"type": 4,
+"value": ""
+}
+}
+comments = Array[String]([])
+strays = Array[String]([])
+characters = "res://dialogues/adventurer_list_tuto.tres"
