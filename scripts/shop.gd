@@ -26,9 +26,9 @@ func _on_outgoing_order_turned_in(reputation_gain):
 	reputation += reputation_gain
 
 	var mission_name = dialogue_box.get_variable("{{mission_name}}")
-	print(mission_name)
-	var mission = missions.filter(func(item): return item.name == mission_name)
-	var challenge_capacity = dialogue_box.get_variable("{{challenge_capacity}}")
+
+	var mission: Mission = missions.filter(func(item): return item.name == mission_name).pick_random()
+	var challenge_capacity: int = dialogue_box.get_variable("{{challenge_capacity}}")
 
 	var result = RunMission.do(challenge_capacity, mission.challenges)
 

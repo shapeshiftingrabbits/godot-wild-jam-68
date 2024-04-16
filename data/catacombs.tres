@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=2 format=3 uid="uid://cxrotaaabbgs"]
+[gd_resource type="Resource" script_class="Mission" load_steps=3 format=3 uid="uid://cxrotaaabbgs"]
 
+[ext_resource type="Resource" uid="uid://du4w2ra7prg1b" path="res://data/easy_challenge_money.tres" id="1_l3dlr"]
 [ext_resource type="Script" path="res://scripts/data_scripts/mission_data.gd" id="1_t3i0f"]
 
 [resource]
 script = ExtResource("1_t3i0f")
-challenges = Array[Resource("res://scripts/data_scripts/challenge_data.gd")]([])
+challenges = Array[Resource("res://scripts/data_scripts/challenge_data.gd")]([ExtResource("1_l3dlr"), ExtResource("1_l3dlr"), ExtResource("1_l3dlr")])
 name = "catacombs"

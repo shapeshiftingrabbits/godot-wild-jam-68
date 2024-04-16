@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=12 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_5d4uv"]
 [ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="2_d3kvp"]
+[ext_resource type="Resource" uid="uid://cxrotaaabbgs" path="res://data/catacombs.tres" id="3_1qgxu"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/dialogueBox.gd" id="4_0l17v"]
 [ext_resource type="Resource" uid="uid://dfuhyrlqc0q1n" path="res://dialogues/order_1.tres" id="5_0eop8"]
@@ -18,6 +19,7 @@ script = ExtResource("7_65erp")
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_5d4uv")
 current_object = ExtResource("2_d3kvp")
+missions = Array[Resource("res://scripts/data_scripts/mission_data.gd")]([ExtResource("3_1qgxu")])
 
 [node name="ReputationLabel" type="Label" parent="."]
 offset_right = 40.0
