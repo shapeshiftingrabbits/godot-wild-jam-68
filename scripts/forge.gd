@@ -2,7 +2,7 @@ extends Panel
 
 signal forged
 
-var forgeable_item
+@export var forgeable_item: Node2D
 @export var items: Array[ForgeableItemData]
 
 func disable():
@@ -17,8 +17,8 @@ func _on_forgeable_item_done():
 	forged.emit()
 
 func _on_run_dialogue_item_extracted(item_id: String):
-	var item = items.filter(func(item: ForgeableItemData): return item.id == item_id).pick_random()
-	forgeable_item.set_to_initial_state(item.spriteFrames)
+	var found_item = items.filter(func(item: ForgeableItemData): return item.id == item_id).pick_random()
+	forgeable_item.set_to_initial_state(found_item.spriteFrames)
 	start_process_with_object()
 
 func start_process_with_object():

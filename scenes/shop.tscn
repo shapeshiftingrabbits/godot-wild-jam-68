@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=15 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_5d4uv"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://85wqf6pegevs" path="res://scenes/outgoing_order.tscn" id="5_q02lg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_xy4cx"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_65erp"]
-[ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="7_ix60j"]
 [ext_resource type="Script" path="res://scripts/commands/run_mission.gd" id="9_m5gx2"]
 [ext_resource type="Resource" uid="uid://cxrotaaabbgs" path="res://data/catacombs.tres" id="9_w2gox"]
 [ext_resource type="Script" path="res://scripts/commands/order_pool.gd" id="10_cm2da"]
@@ -56,7 +55,6 @@ options_vertical = true
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_ceoyu"), SubResource("RichTextEffect_w1wkq")])
 
 [node name="Forge" parent="." instance=ExtResource("3_w4lt2")]
-items = Array[Resource("res://scripts/data_scripts/forgeable_item_data.gd")]([ExtResource("7_ix60j")])
 
 [node name="OutgoingOrder" parent="." instance=ExtResource("5_q02lg")]
 
@@ -81,6 +79,7 @@ reward_dialogue = ExtResource("12_a7c0g")
 [connection signal="turned_in" from="OutgoingOrder" to="." method="_on_outgoing_order_turned_in"]
 [connection signal="completed" from="Commands/RunMission" to="Commands/RunDialogue" method="_on_run_mission_completed"]
 [connection signal="popped" from="Commands/OrderPool" to="Commands/RunDialogue" method="_on_order_pool_popped"]
+[connection signal="ended" from="Commands/RunDialogue" to="." method="_on_run_dialogue_ended"]
 [connection signal="item_extracted" from="Commands/RunDialogue" to="Forge" method="_on_run_dialogue_item_extracted"]
 [connection signal="reward_dialogue_created" from="Commands/RunDialogue" to="Commands/OrderPool" method="_on_run_dialogue_reward_dialogue_created"]
 [connection signal="variable_extracted" from="Commands/RunDialogue" to="Commands/RunMission" method="_on_run_dialogue_variable_extracted"]
