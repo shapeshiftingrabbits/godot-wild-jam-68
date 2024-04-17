@@ -5,19 +5,19 @@
 [resource]
 script = ExtResource("1_dud8j")
 starts = {
-"start_reward": &"0_1"
+"start": &"0_1"
 }
 nodes = {
 "0_1": {
-"link": &"1_1",
-"offset": Vector2(0, 200),
-"start_id": "start_reward"
+"link": &"5_1",
+"offset": Vector2(-600, 400),
+"start_id": "start"
 },
 "1_1": {
 "dialogue": "Hey I'm back!
-The mission went {{mission_grade}}. To thank you, I am sharing some of the spoils.
+The mission went {{mission_status}}. To thank you, I am sharing some of the spoils.
 {{reward}}",
-"offset": Vector2(460, 180),
+"offset": Vector2(1380, 140),
 "options": {
 0: {
 "condition": {},
@@ -27,10 +27,66 @@ The mission went {{mission_grade}}. To thank you, I am sharing some of the spoil
 },
 "size": Vector2(498, 376),
 "speaker": -1
+},
+"4_1": {
+"link": &"1_1",
+"offset": Vector2(80, 340),
+"type": 0,
+"value": "very well",
+"variable": "{{mission_status}}"
+},
+"4_2": {
+"link": &"1_1",
+"offset": Vector2(480, 480),
+"type": 0,
+"value": "ok",
+"variable": "{{mission_status}}"
+},
+"4_3": {
+"link": &"1_1",
+"offset": Vector2(900, 840),
+"type": 0,
+"value": "badly",
+"variable": "{{mission_status}}"
+},
+"4_4": {
+"link": &"1_1",
+"offset": Vector2(880, 640),
+"type": 0,
+"value": "poorly",
+"variable": "{{mission_status}}"
+},
+"5_1": {
+"false": &"5_2",
+"offset": Vector2(-300, 380),
+"operator": -1,
+"true": &"4_1",
+"value1": "{{mission_grade}}",
+"value2": "A"
+},
+"5_2": {
+"false": &"5_3",
+"offset": Vector2(80, 560),
+"operator": -1,
+"true": &"4_2",
+"value1": "{{mission_grade}}",
+"value2": "B"
+},
+"5_3": {
+"false": &"4_3",
+"offset": Vector2(480, 700),
+"operator": -1,
+"true": &"4_4",
+"value1": "{{mission_grade}}",
+"value2": "C"
 }
 }
 variables = {
 "mission_grade": {
+"type": 4,
+"value": ""
+},
+"mission_status": {
 "type": 4,
 "value": ""
 },

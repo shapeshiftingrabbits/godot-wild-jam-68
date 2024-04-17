@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_ktyfm")
+id = "shield"
 title = "The Best Shield"
 description = "It is a very good shield"
 spriteFrames = ExtResource("2_pd477")

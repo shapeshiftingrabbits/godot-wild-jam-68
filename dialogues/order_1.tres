@@ -5,13 +5,13 @@
 [resource]
 script = ExtResource("1_v00ij")
 starts = {
-"1": &"0_1"
+"start": &"0_1"
 }
 nodes = {
 "0_1": {
 "link": &"1_1",
 "offset": Vector2(83, 157),
-"start_id": "1"
+"start_id": "start"
 },
 "1_1": {
 "dialogue": "I'm about to go raid the Catacombs to find Karl, but I need some armour! My budget is 200G.
@@ -164,6 +164,10 @@ variables = {
 "challenge_capacity": {
 "type": 2,
 "value": 1.0
+},
+"item_id": {
+"type": 4,
+"value": "shield"
 },
 "mission_name": {
 "type": 4,

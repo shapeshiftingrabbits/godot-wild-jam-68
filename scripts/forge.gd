@@ -2,14 +2,8 @@ extends Panel
 
 signal forged
 
-@onready var forgeable_item = $ForgeableItem
-
-func start_process_with_object(current_object: ForgeableItemData):
-	set_process_mode(PROCESS_MODE_INHERIT)
-	forgeable_item.set_to_initial_state(current_object.spriteFrames)
-	$Tool.reset()
-	$Tool.enable()
-	show()
+var forgeable_item
+@export var items: Array[ForgeableItemData]
 
 func disable():
 	hide()
@@ -21,3 +15,14 @@ func _on_tool_hit():
 func _on_forgeable_item_done():
 	$Tool.disable()
 	forged.emit()
+
+func _on_run_dialogue_item_extracted(item_id: String):
+	var item = items.filter(func(item: ForgeableItemData): return item.id == item_id).pick_random()
+	forgeable_item.set_to_initial_state(item.spriteFrames)
+	start_process_with_object()
+
+func start_process_with_object():
+	set_process_mode(PROCESS_MODE_INHERIT)
+	$Tool.reset()
+	$Tool.enable()
+	show()
