@@ -9,18 +9,27 @@ signal ended
 @export var reward_dialogue: DialogueData = null
 
 func _on_order_pool_popped(dialog_data: DialogueData):
+		# the node that interest us is 1_1
+	#dialogue_box.set_variable("reward", TYPE_STRING, "20 $")
+	#dialogue_box.set_variable("mission_score", TYPE_STRING, mission_score)
 	dialogue_box.set_data(dialog_data)
+	var dialogue_node = _get_dialogue_node()
+	if ( dialog_data.variables.has("speaker")):
+		dialogue_node["speaker"] = dialog_data.variables["speaker"]
+	print(dialog_data.variables)
 	dialogue_box.start("start")
 
 
 func _on_dialogue_box_dialogue_ended():
-	# Check for reward
-	var is_reward = dialogue_box.get_variable("{{mission_grade}}")
-	#This is from the dialogue box plugin code, default are set to 'undefined'
-	if ( is_reward == 'undefined'):
+	if ( is_reward_dialogue()):
 		_extract_variable()
 	else:
 		ended.emit()
+		
+func is_reward_dialogue():
+	var is_reward = dialogue_box.get_variable("{{mission_score}}")
+	#This is from the dialogue box plugin code, default are set to 'undefined'
+	return ( is_reward == 'undefined')
 
 func _extract_variable():
 	var mission_name = dialogue_box.get_variable("{{mission_name}}")
@@ -42,9 +51,9 @@ func _on_run_mission_completed(mission_result: MissionResult):
 ## Assumes the same character list in the order and reward resources.
 func _set_variables_in_reward_dialogue(character_index: int, mission_score: String):
 	dialogue_box.set_data(reward_dialogue)
-	# the node that interest us is 1_1
-	var dialogue_node = _get_dialogue_node()
-	dialogue_node["speaker"] = character_index
-	dialogue_box.set_variable("reward", TYPE_STRING, "20 $")
-	dialogue_box.set_variable("mission_score", TYPE_STRING, mission_score)
-	reward_dialogue_created.emit(dialogue_box.dialogue_data)
+
+	reward_dialogue.variables["reward"] = {"type":TYPE_STRING, "value": "20 $"}
+	reward_dialogue.variables["mission_score"] = {"type":TYPE_STRING, "value": mission_score}
+	reward_dialogue.variables["speaker"] = {"type":TYPE_INT, "value": character_index}
+	
+	reward_dialogue_created.emit(reward_dialogue)
