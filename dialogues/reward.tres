@@ -61,7 +61,7 @@ The mission went {{mission_status}}. To thank you, I am sharing some of the spoi
 "offset": Vector2(-300, 380),
 "operator": -1,
 "true": &"4_1",
-"value1": "{{mission_grade}}",
+"value1": "{{mission_score}}",
 "value2": "A"
 },
 "5_2": {
