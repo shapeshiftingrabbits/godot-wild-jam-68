@@ -25,11 +25,13 @@ func _on_dialogue_box_dialogue_ended():
 		_extract_variable()
 	else:
 		ended.emit()
-		
+
+
 func is_reward_dialogue():
 	var is_reward = dialogue_box.get_variable("{{mission_score}}")
 	#This is from the dialogue box plugin code, default are set to 'undefined'
 	return ( is_reward == 'undefined')
+
 
 func _extract_variable():
 	var mission_name = dialogue_box.get_variable("{{mission_name}}")
@@ -41,18 +43,20 @@ func _extract_variable():
 	variable_extracted.emit(mission_name, character_index, challenge_capacity)
 	item_extracted.emit(item_id)
 
+
 func _get_dialogue_node():
 	return dialogue_box.dialogue_data.nodes.get("1_1")
 
+
 func _on_run_mission_completed(mission_result: MissionResult):
-	_set_variables_in_reward_dialogue(mission_result.character_index, mission_result.mission_score)
+	_set_variables_in_reward_dialogue(mission_result.character_index, mission_result.mission_score, mission_result.challenges)
 
 
 ## Assumes the same character list in the order and reward resources.
-func _set_variables_in_reward_dialogue(character_index: int, mission_score: String):
+func _set_variables_in_reward_dialogue(character_index: int, mission_score: String, challenges: Array[Challenge]):
 	dialogue_box.set_data(reward_dialogue)
-
-	reward_dialogue.variables["reward"] = {"type":TYPE_STRING, "value": "20 $"}
+	var rewards = challenges.map(func (challenge): return challenge.get_loot_description())
+	reward_dialogue.variables["reward"] = {"type":TYPE_STRING, "value": rewards}
 	reward_dialogue.variables["mission_score"] = {"type":TYPE_STRING, "value": mission_score}
 	reward_dialogue.variables["speaker"] = {"type":TYPE_INT, "value": character_index}
 	

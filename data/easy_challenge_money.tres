@@ -7,3 +7,4 @@
 script = ExtResource("2_xgvjh")
 strength = 1
 loot = ExtResource("1_pncye")
+amount = 5
