@@ -4,33 +4,48 @@ signal variable_extracted(mission_name: String, character_name: int, challenge_c
 signal item_extracted(item_id: String)
 signal reward_dialogue_created(reward_dialogue: DialogueData)
 signal ended
+signal big_project_presented(big_project_dialogue: DialogueData)
 
 @export var dialogue_box: DialogueBox = null
 @export var reward_dialogue: DialogueData = null
 
 func _on_order_pool_popped(dialog_data: DialogueData):
-		# the node that interest us is 1_1
-	#dialogue_box.set_variable("reward", TYPE_STRING, "20 $")
-	#dialogue_box.set_variable("mission_score", TYPE_STRING, mission_score)
 	dialogue_box.set_data(dialog_data)
+	_assign_speaker(dialog_data)
+	dialogue_box.start("start")
+
+func _assign_speaker(dialog_data: DialogueData):
 	var dialogue_node = _get_dialogue_node()
 	if ( dialog_data.variables.has("speaker")):
 		dialogue_node["speaker"] = dialog_data.variables["speaker"]
 	print(dialog_data.variables)
-	dialogue_box.start("start")
 
 
 func _on_dialogue_box_dialogue_ended():
 	if ( is_reward_dialogue()):
 		_extract_variable()
+	elif (is_big_project_dialogue()): 
+		big_project_presented.emit(dialogue_box.dialogue_data)
 	else:
 		ended.emit()
 
 
+func is_regular_dialogue():
+	return check_variable_presence("{{mission_score}}")
+	
+	
 func is_reward_dialogue():
-	var is_reward = dialogue_box.get_variable("{{mission_score}}")
+	return check_variable_presence("{{reward}}")
+	
+	
+func is_big_project_dialogue():
+	return check_variable_presence("{{big_project_id}}")
+
+
+func check_variable_presence(variable_name: String):
+	var has_distinct_variable = dialogue_box.get_variable(variable_name)
 	#This is from the dialogue box plugin code, default are set to 'undefined'
-	return ( is_reward == 'undefined')
+	return ( has_distinct_variable != 'undefined')
 
 
 func _extract_variable():

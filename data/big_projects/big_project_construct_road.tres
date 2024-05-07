@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BigProject" load_steps=5 format=3 uid="uid://cy5wn2re4o1mb"]
+
+[ext_resource type="Resource" uid="uid://bpsy1wimkbvao" path="res://data/money.tres" id="1_g0g6t"]
+[ext_resource type="Script" path="res://scripts/data_scripts/loot_data.gd" id="2_qbnwl"]
+[ext_resource type="Script" path="res://scripts/data_scripts/big_project_data.gd" id="3_83e5j"]
+
+[sub_resource type="Resource" id="Resource_kf342"]
+script = ExtResource("2_qbnwl")
+loot_item = ExtResource("1_g0g6t")
+amount = 20
+
+[resource]
+script = ExtResource("3_83e5j")
+title = "Build road to capital"
+description = ""
+loots = Array[ExtResource("2_qbnwl")]([SubResource("Resource_kf342")])

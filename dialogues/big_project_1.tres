@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ba3cwbeyfo4a4"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_cydal"]
+
+[resource]
+script = ExtResource("1_cydal")
+starts = {
+"start": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(120, 180),
+"start_id": "start"
+},
+"1_1": {
+"dialogue": "We need money to hire workers a new road to the capital. 
+This will allow people to travel more easily and the town will become an important hub.",
+"offset": Vector2(540, 100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(350, 359),
+"speaker": 0
+}
+}
+variables = {
+"big_project_id": {
+"type": 4,
+"value": "big_project_construct_road"
+}
+}
+comments = Array[String]([])
+strays = Array[String]([])
+characters = "res://dialogues/adventurer_list_tuto.tres"
