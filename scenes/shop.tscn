@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=16 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_5d4uv"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/commands/order_pool.gd" id="10_cm2da"]
 [ext_resource type="Script" path="res://scripts/commands/run_dialogue.gd" id="11_m17v7"]
 [ext_resource type="Resource" uid="uid://dbbfnurrnfoem" path="res://dialogues/reward.tres" id="12_a7c0g"]
+[ext_resource type="Script" path="res://scripts/commands/track_big_project_completion.gd" id="13_vxdqf"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ceoyu"]
 script = ExtResource("6_xy4cx")
@@ -73,12 +74,16 @@ script = ExtResource("11_m17v7")
 dialogue_box = NodePath("../../IncomingOrder/DialogueBox")
 reward_dialogue = ExtResource("12_a7c0g")
 
+[node name="TrackBigProjectCompletion" type="Node" parent="Commands"]
+script = ExtResource("13_vxdqf")
+
 [connection signal="ready_state" from="." to="Commands/OrderPool" method="_on_shop_ready_state"]
 [connection signal="dialogue_ended" from="IncomingOrder/DialogueBox" to="Commands/RunDialogue" method="_on_dialogue_box_dialogue_ended"]
 [connection signal="forged" from="Forge" to="." method="_on_forge_forged"]
 [connection signal="turned_in" from="OutgoingOrder" to="." method="_on_outgoing_order_turned_in"]
 [connection signal="completed" from="Commands/RunMission" to="Commands/RunDialogue" method="_on_run_mission_completed"]
 [connection signal="popped" from="Commands/OrderPool" to="Commands/RunDialogue" method="_on_order_pool_popped"]
+[connection signal="big_project_presented" from="Commands/RunDialogue" to="Commands/TrackBigProjectCompletion" method="_on_run_dialogue_big_project_presented"]
 [connection signal="ended" from="Commands/RunDialogue" to="." method="_on_run_dialogue_ended"]
 [connection signal="item_extracted" from="Commands/RunDialogue" to="Forge" method="_on_run_dialogue_item_extracted"]
 [connection signal="reward_dialogue_created" from="Commands/RunDialogue" to="Commands/OrderPool" method="_on_run_dialogue_reward_dialogue_created"]
