@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=17 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_5d4uv"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://cxrotaaabbgs" path="res://data/catacombs.tres" id="9_w2gox"]
 [ext_resource type="Script" path="res://scripts/commands/order_pool.gd" id="10_cm2da"]
 [ext_resource type="Script" path="res://scripts/commands/run_dialogue.gd" id="11_m17v7"]
+[ext_resource type="Resource" uid="uid://ba3cwbeyfo4a4" path="res://dialogues/big_project_1.tres" id="11_wvwid"]
 [ext_resource type="Resource" uid="uid://dbbfnurrnfoem" path="res://dialogues/reward.tres" id="12_a7c0g"]
 [ext_resource type="Script" path="res://scripts/commands/track_big_project_completion.gd" id="13_vxdqf"]
 
@@ -67,7 +68,7 @@ missions = Array[Resource("res://scripts/data_scripts/mission_data.gd")]([ExtRes
 
 [node name="OrderPool" type="Node" parent="Commands"]
 script = ExtResource("10_cm2da")
-orders_in = Array[Resource("res://addons/dialogue_nodes/objects/DialogueData.gd")]([ExtResource("5_0eop8")])
+orders_in = Array[Resource("res://addons/dialogue_nodes/objects/DialogueData.gd")]([ExtResource("11_wvwid"), ExtResource("5_0eop8")])
 
 [node name="RunDialogue" type="Node" parent="Commands" node_paths=PackedStringArray("dialogue_box")]
 script = ExtResource("11_m17v7")
@@ -88,3 +89,4 @@ script = ExtResource("13_vxdqf")
 [connection signal="item_extracted" from="Commands/RunDialogue" to="Forge" method="_on_run_dialogue_item_extracted"]
 [connection signal="reward_dialogue_created" from="Commands/RunDialogue" to="Commands/OrderPool" method="_on_run_dialogue_reward_dialogue_created"]
 [connection signal="variable_extracted" from="Commands/RunDialogue" to="Commands/RunMission" method="_on_run_dialogue_variable_extracted"]
+[connection signal="big_project_updated" from="Commands/TrackBigProjectCompletion" to="." method="_on_track_big_project_completion_big_project_updated"]

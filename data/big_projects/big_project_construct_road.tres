@@ -12,5 +12,5 @@ amount = 20
 [resource]
 script = ExtResource("3_83e5j")
 title = "Build road to capital"
-description = ""
+description = "Unlocks more adventurers"
 loots = Array[ExtResource("2_qbnwl")]([SubResource("Resource_kf342")])

@@ -28,3 +28,7 @@ func _on_outgoing_order_turned_in(reputation_gain):
 
 func _on_run_dialogue_ended():
 	update_shop_state()
+
+
+func _on_track_big_project_completion_big_project_updated():
+	update_shop_state()
