@@ -32,3 +32,4 @@ func _on_run_dialogue_ended():
 
 func _on_track_big_project_completion_big_project_updated():
 	update_shop_state()
+

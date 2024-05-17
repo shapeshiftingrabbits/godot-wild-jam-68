@@ -4,7 +4,12 @@ signal big_project_updated
 
 var ledger: Array[LedgerItem]
 
-@export var big_projects_dialogue:DialogueData
+var big_projects_dialogue:DialogueData
+
+func _on_run_dialogue_big_project_presented(p_big_project_dialogue: DialogueData):
+	big_projects_dialogue = p_big_project_dialogue
+	extract_ledger_from_dialogue()
+
 
 func extract_ledger_from_dialogue():
 	var big_project_id
@@ -21,7 +26,3 @@ func extract_ledger_from_dialogue():
 	#for ledger_item in ledger:
 		#print(ledger_item.loot_item.name, ledger_item.current_amount, ledger_item.expected_amount)
 
-
-func _on_run_dialogue_big_project_presented(p_big_project_dialogue):
-	big_projects_dialogue = p_big_project_dialogue
-	extract_ledger_from_dialogue()
