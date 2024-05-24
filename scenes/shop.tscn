@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=26 format=3 uid="uid://c010sfubpw1uv"]
 
-[ext_resource type="Script" path="res://scripts/shop.gd" id="1_5d4uv"]
+[ext_resource type="Script" path="res://scripts/commands/update_shop_state.gd" id="1_5d4uv"]
+[ext_resource type="Script" path="res://scripts/commands/update_reputation_label.gd" id="1_moh8k"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/dialogueBox.gd" id="4_0l17v"]
 [ext_resource type="Resource" uid="uid://dfuhyrlqc0q1n" path="res://dialogues/order_1.tres" id="5_0eop8"]
@@ -15,8 +16,13 @@
 [ext_resource type="Resource" uid="uid://dbbfnurrnfoem" path="res://dialogues/reward.tres" id="12_a7c0g"]
 [ext_resource type="Script" path="res://scripts/commands/extract_variables_from_dialogue.gd" id="13_bedk2"]
 [ext_resource type="Script" path="res://scripts/commands/track_big_project_completion.gd" id="13_vxdqf"]
-[ext_resource type="Script" path="res://scripts/commands/present_big_project.gd" id="14_yd7gf"]
+[ext_resource type="Script" path="res://scripts/commands/check_if_dialogue_is_big_project.gd" id="14_yd7gf"]
 [ext_resource type="Script" path="res://scripts/commands/fill_in_reward_dialogue.gd" id="16_0gtg7"]
+[ext_resource type="Script" path="res://scripts/commands/update_player_state.gd" id="16_b85t4"]
+[ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="17_7b8fn"]
+[ext_resource type="Script" path="res://scripts/commands/start_forge_wtih_forgeable_item.gd" id="18_ymlh1"]
+[ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="19_fm0r5"]
+[ext_resource type="Script" path="res://scripts/commands/get_next_order_from_order_pool.gd" id="21_it3iy"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ceoyu"]
 script = ExtResource("6_xy4cx")
@@ -25,9 +31,9 @@ script = ExtResource("6_xy4cx")
 script = ExtResource("7_65erp")
 
 [node name="Shop" type="Node2D"]
-script = ExtResource("1_5d4uv")
 
 [node name="ReputationLabel" type="Label" parent="."]
+unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Reputation:"
@@ -77,17 +83,35 @@ dialogue_box = NodePath("../../IncomingOrder/DialogueBox")
 script = ExtResource("13_bedk2")
 dialogue_box = NodePath("../../IncomingOrder/DialogueBox")
 
-[node name="RunBigProjectDialogue" type="Node" parent="Commands" node_paths=PackedStringArray("dialogue_box")]
+[node name="FillInRewardDialogue" type="Node" parent="Commands" node_paths=PackedStringArray("dialogue_box")]
+script = ExtResource("16_0gtg7")
+dialogue_box = NodePath("../../IncomingOrder/DialogueBox")
+reward_dialogue = ExtResource("12_a7c0g")
+
+[node name="CheckIfDialogueIsBigProject" type="Node" parent="Commands" node_paths=PackedStringArray("dialogue_box")]
 script = ExtResource("14_yd7gf")
 dialogue_box = NodePath("../../IncomingOrder/DialogueBox")
 
 [node name="TrackBigProjectCompletion" type="Node" parent="Commands"]
 script = ExtResource("13_vxdqf")
 
-[node name="FillInRewardDialogue" type="Node" parent="Commands" node_paths=PackedStringArray("dialogue_box")]
-script = ExtResource("16_0gtg7")
-dialogue_box = NodePath("../../IncomingOrder/DialogueBox")
-reward_dialogue = ExtResource("12_a7c0g")
+[node name="UpdateShopState" type="Node" parent="Commands"]
+script = ExtResource("1_5d4uv")
+
+[node name="UpdatePlayerState" type="Node" parent="Commands"]
+script = ExtResource("16_b85t4")
+player_state = ExtResource("17_7b8fn")
+
+[node name="StartForgeWithForgeableItem" type="Node" parent="Commands" node_paths=PackedStringArray("forge")]
+script = ExtResource("18_ymlh1")
+items = Array[Resource("res://scripts/data_scripts/forgeable_item_data.gd")]([ExtResource("19_fm0r5")])
+forge = NodePath("../../Forge")
+
+[node name="UpdateReputationUI" type="Node" parent="Commands"]
+script = ExtResource("1_moh8k")
+
+[node name="GetNextOrderFromOrderPool" type="Node" parent="Commands"]
+script = ExtResource("21_it3iy")
 
 [node name="Models" type="Node" parent="."]
 
@@ -95,18 +119,22 @@ reward_dialogue = ExtResource("12_a7c0g")
 script = ExtResource("13_vxdqf")
 
 [node name="OrderPool" type="Node" parent="Models"]
+unique_name_in_owner = true
 script = ExtResource("10_cm2da")
 orders_in = Array[Resource("res://addons/dialogue_nodes/objects/DialogueData.gd")]([ExtResource("11_wvwid"), ExtResource("5_0eop8")])
 
-[connection signal="ready_state" from="." to="Models/OrderPool" method="_on_shop_ready_state"]
 [connection signal="dialogue_ended" from="IncomingOrder/DialogueBox" to="Commands/RunDialogue" method="_on_dialogue_box_dialogue_ended"]
 [connection signal="dialogue_ended" from="IncomingOrder/DialogueBox" to="Commands/ExtractVariableFromDialogue" method="_on_dialogue_box_dialogue_ended"]
-[connection signal="dialogue_ended" from="IncomingOrder/DialogueBox" to="Commands/RunBigProjectDialogue" method="_on_dialogue_box_dialogue_ended"]
+[connection signal="dialogue_ended" from="IncomingOrder/DialogueBox" to="Commands/CheckIfDialogueIsBigProject" method="_on_dialogue_box_dialogue_ended"]
 [connection signal="forged" from="Forge" to="." method="_on_forge_forged"]
 [connection signal="turned_in" from="OutgoingOrder" to="." method="_on_outgoing_order_turned_in"]
+[connection signal="turned_in" from="OutgoingOrder" to="Commands/UpdatePlayerState" method="_on_outgoing_order_turned_in"]
 [connection signal="completed" from="Commands/RunMission" to="Commands/FillInRewardDialogue" method="_on_run_mission_completed"]
 [connection signal="ended" from="Commands/RunDialogue" to="." method="_on_run_dialogue_ended"]
+[connection signal="done" from="Commands/ExtractVariableFromDialogue" to="Commands/RunMission" method="_on_extract_variable_from_dialogue_done"]
+[connection signal="done" from="Commands/FillInRewardDialogue" to="Models/OrderPool" method="_on_fill_in_reward_dialogue_done"]
+[connection signal="is_confirmed" from="Commands/CheckIfDialogueIsBigProject" to="Commands/TrackBigProjectCompletion" method="_on_check_if_dialogue_is_big_project_is_confirmed"]
 [connection signal="big_project_updated" from="Commands/TrackBigProjectCompletion" to="." method="_on_track_big_project_completion_big_project_updated"]
-[connection signal="reward_dialogue_created" from="Commands/FillInRewardDialogue" to="Models/OrderPool" method="_on_fill_in_reward_dialogue_reward_dialogue_created"]
+[connection signal="ready_for_next_order" from="Commands/UpdateShopState" to="Commands/GetNextOrderFromOrderPool" method="_on_update_shop_state_ready_for_next_order"]
+[connection signal="reputation_changed" from="Commands/UpdatePlayerState" to="Commands/UpdateReputationUI" method="_on_update_player_state_reputation_changed"]
 [connection signal="big_project_updated" from="Models/Inventory" to="." method="_on_track_big_project_completion_big_project_updated"]
-[connection signal="popped" from="Models/OrderPool" to="Commands/RunDialogue" method="_on_order_pool_popped"]

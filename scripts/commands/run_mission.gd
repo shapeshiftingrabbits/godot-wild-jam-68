@@ -6,8 +6,7 @@ signal completed(mission_result: MissionResult)
 
 @export var missions: Array[Mission]
 
-
-func _on_run_dialogue_variable_extracted(mission_name: String, character_index: int, challenge_capacity: int):
+func _on_extract_variable_from_dialogue_done(mission_name: String, character_index: int, challenge_capacity: int, item_id: String):
 	var mission: Mission = missions.filter(func(item): return item.name == mission_name).pick_random() # Expect only 1 result
 	var beaten_challenges: Array[Challenge] = _get_loots_from_running_mission(challenge_capacity, mission.challenges)
 	var score = _get_score(beaten_challenges.size(), mission.challenges.size())

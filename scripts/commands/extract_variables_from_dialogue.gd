@@ -1,9 +1,14 @@
 extends Node
 
-signal variable_extracted(mission_name: String, character_name: int, challenge_capacity: int)
-signal item_extracted(item_id: String)
+signal done(mission_name: String, character_name: int, challenge_capacity: int, item_id: String)
+
 
 @export var dialogue_box: DialogueBox = null
+
+func _on_dialogue_box_dialogue_ended():
+	if ( DialogueHelper.is_regular_dialogue(dialogue_box)):
+		_extract_variable()
+
 
 func _extract_variable():
 	var mission_name = dialogue_box.get_variable("{{mission_name}}")
@@ -12,9 +17,4 @@ func _extract_variable():
 	var dialogue_node = DialogueHelper.get_dialogue_node(dialogue_box)
 	var character_index = dialogue_node["speaker"]
 	
-	variable_extracted.emit(mission_name, character_index, challenge_capacity)
-	item_extracted.emit(item_id)
-
-func _on_dialogue_box_dialogue_ended():
-	if ( DialogueHelper.is_regular_dialogue(dialogue_box)):
-		_extract_variable()
+	done.emit(mission_name, character_index, challenge_capacity, item_id)

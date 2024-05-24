@@ -2,7 +2,7 @@ extends Node
 
 class_name FillInRewardDialogue
 
-signal reward_dialogue_created(reward_dialogue: DialogueData)
+signal done(reward_dialogue: DialogueData)
 
 @export var dialogue_box: DialogueBox = null
 @export var reward_dialogue: DialogueData = null
@@ -19,7 +19,7 @@ func _set_variables_in_reward_dialogue(character_index: int, mission_score: Stri
 	reward_dialogue.variables["mission_score"] = {"type":TYPE_STRING, "value": mission_score}
 	reward_dialogue.variables["speaker"] = {"type":TYPE_INT, "value": character_index}
 	
-	reward_dialogue_created.emit(reward_dialogue)
+	done.emit(reward_dialogue)
 
 
 func get_loot_description(challenges: Array[Challenge]):

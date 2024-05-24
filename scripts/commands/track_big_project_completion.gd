@@ -6,7 +6,7 @@ var ledger: Array[LedgerItem]
 
 var big_projects_dialogue:DialogueData
 
-func _on_run_dialogue_big_project_presented(p_big_project_dialogue: DialogueData):
+func _on_check_if_dialogue_is_big_project_is_confirmed(p_big_project_dialogue: DialogueData):
 	big_projects_dialogue = p_big_project_dialogue
 	extract_ledger_from_dialogue()
 
@@ -25,4 +25,6 @@ func extract_ledger_from_dialogue():
 	big_project_updated.emit()
 	#for ledger_item in ledger:
 		#print(ledger_item.loot_item.name, ledger_item.current_amount, ledger_item.expected_amount)
+
+
 
