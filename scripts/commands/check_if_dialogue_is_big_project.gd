@@ -1,6 +1,5 @@
 extends Node
 
-
 signal is_confirmed(big_project_dialogue: DialogueData)
 
 @export var dialogue_box: DialogueBox = null

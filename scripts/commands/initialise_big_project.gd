@@ -1,6 +1,5 @@
 extends Node
 
-signal big_project_updated
 
 var ledger: Array[LedgerItem]
 
@@ -22,9 +21,5 @@ func extract_ledger_from_dialogue():
 	var big_project: BigProject = load("res://data/big_projects/%s.tres" % big_project_id)
 	var ledger_items = big_project.loots.map(func (loot: Loot): return LedgerItem.new(loot.loot_item, loot.amount))
 	ledger.assign(ledger_items)
-	big_project_updated.emit()
 	#for ledger_item in ledger:
 		#print(ledger_item.loot_item.name, ledger_item.current_amount, ledger_item.expected_amount)
-
-
-

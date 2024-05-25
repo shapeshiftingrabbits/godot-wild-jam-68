@@ -15,9 +15,3 @@ func get_next_order():
 		popped.emit(dialogue_data)
 	else:
 		exhausted.emit()
-
-
-func _on_fill_in_reward_dialogue_done(reward_dialogue):
-	order_pool.insert_order(reward_dialogue)
-
-

@@ -8,13 +8,13 @@ func _ready():
 	
 
 func update_shop_state():
-	$OutgoingOrder.hide()
-	$Forge.disable()
+	%OutgoingOrder.hide()
+	%Forge.disable()
 	ready_for_next_order.emit()
 
 
 func _on_forge_forged():
-	$OutgoingOrder.show()
+	%OutgoingOrder.show()
 
 
 func _on_outgoing_order_turned_in():
@@ -28,3 +28,6 @@ func _on_run_dialogue_ended():
 func _on_track_big_project_completion_big_project_updated():
 	update_shop_state()
 
+
+func _on_check_if_dialogue_is_reward_dialogue_is_confirmed():
+	update_shop_state()
