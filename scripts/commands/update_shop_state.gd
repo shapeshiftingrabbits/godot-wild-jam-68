@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 signal ready_for_next_order
 
@@ -30,4 +30,8 @@ func _on_track_big_project_completion_big_project_updated():
 
 
 func _on_check_if_dialogue_is_reward_dialogue_is_confirmed():
+	update_shop_state()
+
+
+func _on_present_big_project_ui_confirmed():
 	update_shop_state()

@@ -5,6 +5,9 @@ signal exhausted
 
 @onready var order_pool: OrderPool = %OrderPool
 
+func _ready():
+	print("ready")
+
 func _on_update_shop_state_ready_for_next_order():
 	get_next_order() 
 

@@ -1,4 +1,4 @@
-extends Label
+extends Node
 
 @onready var reputation_label = %ReputationLabel
 
