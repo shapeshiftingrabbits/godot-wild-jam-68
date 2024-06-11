@@ -90,6 +90,10 @@ variables = {
 "type": 4,
 "value": ""
 },
+"mission_type": {
+"type": 4,
+"value": " reward"
+},
 "reward": {
 "type": 4,
 "value": ""

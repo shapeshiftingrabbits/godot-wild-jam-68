@@ -23,7 +23,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241),
+"size": Vector2(300, 358),
 "speaker": -1
 }
 }
@@ -31,6 +31,10 @@ variables = {
 "project_name": {
 "type": 4,
 "value": ""
+},
+"type": {
+"type": 4,
+"value": "big_project_reward"
 }
 }
 comments = Array[String]([])

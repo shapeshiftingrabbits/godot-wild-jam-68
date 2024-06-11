@@ -24,7 +24,7 @@ This will allow people to travel more easily and the town will become an importa
 "text": ""
 }
 },
-"size": Vector2(350, 359),
+"size": Vector2(350, 365),
 "speaker": 0
 }
 }
@@ -32,6 +32,10 @@ variables = {
 "big_project_id": {
 "type": 4,
 "value": "big_project_construct_road"
+},
+"type": {
+"type": 4,
+"value": "big_project"
 }
 }
 comments = Array[String]([])

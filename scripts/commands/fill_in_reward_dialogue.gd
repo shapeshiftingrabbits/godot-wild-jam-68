@@ -1,15 +1,17 @@
-extends Node
+extends RefCounted
 
 class_name FillInRewardDialogue
 
-signal done(reward_dialogue: DialogueData)
+var dialogue_box: DialogueBox = null
+var reward_dialogue: DialogueData = null
 
-@export var dialogue_box: DialogueBox = null
-@export var reward_dialogue: DialogueData = null
 
 func _on_run_mission_completed(mission_result: MissionResult):
 	_set_variables_in_reward_dialogue(mission_result.character_index, mission_result.mission_score, mission_result.challenges)
 
+func _init(in_dialogue_box: DialogueBox, in_reward_dialogue: DialogueData):
+	dialogue_box = in_dialogue_box
+	reward_dialogue = in_reward_dialogue
 
 ## Assumes the same character list in the order and reward resources.
 func _set_variables_in_reward_dialogue(character_index: int, mission_score: String, challenges: Array[Challenge]):
@@ -19,7 +21,6 @@ func _set_variables_in_reward_dialogue(character_index: int, mission_score: Stri
 	reward_dialogue.variables["mission_score"] = {"type":TYPE_STRING, "value": mission_score}
 	reward_dialogue.variables["speaker"] = {"type":TYPE_INT, "value": character_index}
 	
-	done.emit(reward_dialogue)
 
 
 func get_loot_description(challenges: Array[Challenge]):

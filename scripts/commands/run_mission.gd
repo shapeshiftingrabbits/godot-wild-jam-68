@@ -2,22 +2,35 @@ extends Node
 
 class_name RunMission
 
-signal completed(mission_result: MissionResult)
-
 @export var missions: Array[Mission]
+@export var reward_dialogue: DialogueData = null
+@onready var dialogue_box = %DialogueBox
+@onready var order_pool: OrderPool = %OrderPool
 
-func _on_extract_variable_from_dialogue_done(mission_name: String, character_index: int, challenge_capacity: int, _item_id: String):
+func create_mission_result_dialogue():
+	var mission_name = DialogueHelper.get_mission_name(dialogue_box)
 	var mission: Mission = missions.filter(func(item): return item.name == mission_name).pick_random() # Expect only 1 result
+	
+	# Get score and encounters results.
+	var challenge_capacity: int = dialogue_box.get_variable("{{challenge_capacity}}")
 	var beaten_challenges: Array[Challenge] = _get_loots_from_running_mission(challenge_capacity, mission.challenges)
 	var score = _get_score(beaten_challenges.size(), mission.challenges.size())
-	var result = _create_mission_result(character_index, beaten_challenges, score)
-	completed.emit(result)
+	
+	# Get the speaker from the dialogue the dialogue
+	var dialogue_node = DialogueHelper.get_dialogue_node(dialogue_box)
+	var character_index = dialogue_node["speaker"]
+	
+	var fill_in_reward_dialogue = FillInRewardDialogue.new(dialogue_box, reward_dialogue)
+	fill_in_reward_dialogue._set_variables_in_reward_dialogue(character_index,score,beaten_challenges)
+	
+	order_pool.insert_order(reward_dialogue)
 
 
 ## Calculate the success of the [param challenge_capacity] agains a list of [param challenges].
 func _get_loots_from_running_mission(challenge_capacity: int, challenges: Array[Challenge]):
 	var current_challenge_capacity = challenge_capacity
 	var beaten_challenges: Array[Challenge] = []
+	
 	for i in challenges.size():
 		var challenge = challenges[i]
 		current_challenge_capacity -= challenge.strength
@@ -25,6 +38,7 @@ func _get_loots_from_running_mission(challenge_capacity: int, challenges: Array[
 			beaten_challenges.push_back(challenge)
 		else:
 			break
+
 	return beaten_challenges
 
 
@@ -35,9 +49,6 @@ func _get_score(beaten_challenge_index: int, challenge_length: int):
 	return score
 
 
-func _create_mission_result(character_index: int, challenges: Array[Challenge], score: String):
-	var result = MissionResult.new()
-	result.mission_score = score
-	result.challenges.assign(challenges)
-	result.character_index = character_index
-	return result
+# Signal
+func _on_run_mission_state_entered():
+	create_mission_result_dialogue()

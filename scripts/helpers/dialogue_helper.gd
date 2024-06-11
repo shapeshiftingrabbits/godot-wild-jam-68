@@ -18,7 +18,7 @@ static func _check_variable_presence(dialogue_box: DialogueBox, variable_name: S
 	var has_variable = dialogue_box.get_variable(variable_name)
 	#This is from the dialogue box plugin code, default are set to 'undefined'
 	return ( has_variable != 'undefined')
-
+	
 
 static func assign_speaker(dialogue_box: DialogueBox, dialog_data: DialogueData):
 	var dialogue_node = get_dialogue_node(dialogue_box)
@@ -29,3 +29,8 @@ static func assign_speaker(dialogue_box: DialogueBox, dialog_data: DialogueData)
 
 static func get_dialogue_node(dialogue_box: DialogueBox):
 	return dialogue_box.dialogue_data.nodes.get("1_1")
+
+
+static func get_mission_name(dialogue_box: DialogueBox):
+	var mission_name = dialogue_box.get_variable("{{mission_name}}")
+	return mission_name
