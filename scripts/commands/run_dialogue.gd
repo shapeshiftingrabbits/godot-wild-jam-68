@@ -4,11 +4,12 @@ extends Node
 @onready var order_pool: OrderPool = %OrderPool
 @onready var state_chart: StateChart = %StateChart
 
-func do():
+func _do():
 	var dialogue_data = order_pool.get_order()
 	dialogue_box.set_data(dialogue_data)
 	
 	DialogueHelper.assign_speaker(dialogue_box, dialogue_data)
+	
 	_set_dialogue_type_for_expression_property()
 	
 	dialogue_box.start("start")
@@ -19,4 +20,4 @@ func _set_dialogue_type_for_expression_property():
 
 # Signals
 func _on_get_next_dialogue_state_entered():
-	do()
+	_do()

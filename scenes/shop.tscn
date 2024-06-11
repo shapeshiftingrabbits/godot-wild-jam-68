@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=28 format=3 uid="uid://c010sfubpw1uv"]
 
-[ext_resource type="Script" path="res://scripts/commands/update_shop_state.gd" id="1_5d4uv"]
+[ext_resource type="Script" path="res://scripts/commands/turn_in_order.gd" id="1_5d4uv"]
 [ext_resource type="Script" path="res://scripts/commands/update_reputation_label.gd" id="1_moh8k"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/dialogueBox.gd" id="4_0l17v"]
@@ -14,8 +14,6 @@
 [ext_resource type="Script" path="res://scripts/commands/run_dialogue.gd" id="11_m17v7"]
 [ext_resource type="Resource" uid="uid://ba3cwbeyfo4a4" path="res://dialogues/big_project_1.tres" id="11_wvwid"]
 [ext_resource type="Script" path="res://scripts/commands/initialise_big_project.gd" id="13_vxdqf"]
-[ext_resource type="Script" path="res://scripts/commands/update_player_state.gd" id="16_b85t4"]
-[ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="17_7b8fn"]
 [ext_resource type="Script" path="res://scripts/commands/start_forge_wtih_forgeable_item.gd" id="18_ymlh1"]
 [ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="19_fm0r5"]
 [ext_resource type="Script" path="res://scripts/commands/present_big_project_ui.gd" id="24_s8uu1"]
@@ -118,11 +116,7 @@ script = ExtResource("1_moh8k")
 [node name="PresentBigProjectUI" type="Node" parent="Commands"]
 script = ExtResource("24_s8uu1")
 
-[node name="UpdatePlayerState" type="Node" parent="Commands"]
-script = ExtResource("16_b85t4")
-player_state = ExtResource("17_7b8fn")
-
-[node name="UpdateShopState" type="Node" parent="Commands"]
+[node name="TurnInOrder" type="Node" parent="Commands"]
 script = ExtResource("1_5d4uv")
 
 [node name="StateChart" type="Node" parent="."]
@@ -173,14 +167,12 @@ script = ExtResource("29_llx32")
 [node name="RunMission" type="Node" parent="StateChart/CompoundState/ProcessOrder"]
 script = ExtResource("29_llx32")
 
-[node name="CreateReward" type="Node" parent="StateChart/CompoundState/ProcessOrder"]
-script = ExtResource("29_llx32")
-
 [connection signal="forged" from="Forge" to="." method="_on_forge_forged"]
-[connection signal="turned_in" from="OutgoingOrder" to="." method="_on_outgoing_order_turned_in"]
-[connection signal="turned_in" from="OutgoingOrder" to="Commands/UpdatePlayerState" method="_on_outgoing_order_turned_in"]
-[connection signal="confirmed" from="Commands/PresentBigProjectUI" to="Commands/UpdateShopState" method="_on_present_big_project_ui_confirmed"]
-[connection signal="reputation_changed" from="Commands/UpdatePlayerState" to="Commands/UpdateReputationUI" method="_on_update_player_state_reputation_changed"]
+[connection signal="turned_in" from="OutgoingOrder" to="Commands/TurnInOrder" method="_on_outgoing_order_turned_in"]
 [connection signal="state_entered" from="StateChart/CompoundState/GetNextDialogue" to="Commands/RunDialogue" method="_on_get_next_dialogue_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/PresentBigProject" to="Commands/PresentBigProjectUI" method="_on_present_big_project_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/ProcessOrder/Craft" to="Commands/StartForgeWithForgeableItem" method="_on_craft_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/ProcessOrder/TurnIn" to="Commands/TurnInOrder" method="_on_turn_in_state_entered"]
+[connection signal="state_exited" from="StateChart/CompoundState/ProcessOrder/TurnIn" to="Commands/UpdateReputationUI" method="_on_turn_in_state_exited"]
+[connection signal="state_exited" from="StateChart/CompoundState/ProcessOrder/TurnIn" to="Commands/TurnInOrder" method="_on_turn_in_state_exited"]
 [connection signal="state_entered" from="StateChart/CompoundState/ProcessOrder/RunMission" to="Commands/RunMission" method="_on_run_mission_state_entered"]

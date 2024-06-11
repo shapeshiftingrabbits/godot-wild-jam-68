@@ -1,8 +1,6 @@
 extends Panel
 
-signal turned_in(reputation_gain)
-
-const REPUTATION_GAIN = 1
+signal turned_in()
 
 func _on_button_pressed():
-	turned_in.emit(REPUTATION_GAIN)
+	turned_in.emit()
