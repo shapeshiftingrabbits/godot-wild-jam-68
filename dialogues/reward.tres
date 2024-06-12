@@ -82,6 +82,10 @@ The mission went {{mission_status}}. To thank you, I am sharing some of the spoi
 }
 }
 variables = {
+"dialogue_type": {
+"type": 4,
+"value": "mission_reward"
+},
 "mission_score": {
 "type": 4,
 "value": ""

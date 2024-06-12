@@ -28,13 +28,13 @@ nodes = {
 }
 }
 variables = {
+"dialogue_type": {
+"type": 4,
+"value": "big_project_reward"
+},
 "project_name": {
 "type": 4,
 "value": ""
-},
-"type": {
-"type": 4,
-"value": "big_project_reward"
 }
 }
 comments = Array[String]([])

@@ -3,6 +3,7 @@ extends Node
 @export var items: Array[ForgeableItemData] = []
 @export var forge: Forge = null
 @onready var dialogue_box = %DialogueBox
+@onready var state_chart = %StateChart
 
 func do():
 	var item_id: String = dialogue_box.get_variable("{{item_id}}")
@@ -15,3 +16,7 @@ func do():
 # Signals
 func _on_craft_state_entered():
 	do()
+
+
+func _on_forge_forged():
+	state_chart.send_event("crafted")

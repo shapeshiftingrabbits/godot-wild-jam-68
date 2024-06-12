@@ -33,7 +33,7 @@ variables = {
 "type": 4,
 "value": "big_project_construct_road"
 },
-"type": {
+"dialogue_type": {
 "type": 4,
 "value": "big_project"
 }

@@ -19,5 +19,10 @@ func _set_dialogue_type_for_expression_property():
 	state_chart.set_expression_property("dialogue_type", dialogue_type)
 
 # Signals
-func _on_get_next_dialogue_state_entered():
+
+func _on_run_dialogue_state_entered():
 	_do()
+
+
+func _on_dialogue_box_dialogue_ended():
+	state_chart.send_event("dialogue_ended")

@@ -6,6 +6,7 @@ class_name RunMission
 @export var reward_dialogue: DialogueData = null
 @onready var dialogue_box = %DialogueBox
 @onready var order_pool: OrderPool = %OrderPool
+@onready var state_chart = %StateChart
 
 func create_mission_result_dialogue():
 	var mission_name = DialogueHelper.get_mission_name(dialogue_box)
@@ -24,7 +25,7 @@ func create_mission_result_dialogue():
 	fill_in_reward_dialogue._set_variables_in_reward_dialogue(character_index,score,beaten_challenges)
 	
 	order_pool.insert_order(reward_dialogue)
-
+	state_chart.send_event("mission_completed")
 
 ## Calculate the success of the [param challenge_capacity] agains a list of [param challenges].
 func _get_loots_from_running_mission(challenge_capacity: int, challenges: Array[Challenge]):

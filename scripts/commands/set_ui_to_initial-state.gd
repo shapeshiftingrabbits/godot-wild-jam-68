@@ -4,5 +4,5 @@ extends Node
 @onready var outgoing_order = %OutgoingOrder
 
 func _on_run_dialogue_state_entered():
-	forge.hide()
+	forge.disable()
 	outgoing_order.hide()

@@ -165,6 +165,10 @@ variables = {
 "type": 2,
 "value": 1.0
 },
+"dialogue_type": {
+"type": 4,
+"value": "mission"
+},
 "item_id": {
 "type": 4,
 "value": "shield"
@@ -172,10 +176,6 @@ variables = {
 "mission_name": {
 "type": 4,
 "value": "catacombs"
-},
-"type": {
-"type": 4,
-"value": "mission"
 }
 }
 comments = Array[String]([])
