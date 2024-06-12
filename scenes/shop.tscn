@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=30 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/commands/turn_in_order.gd" id="1_5d4uv"]
-[ext_resource type="Script" path="res://scripts/commands/update_reputation_label.gd" id="1_moh8k"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/dialogueBox.gd" id="4_0l17v"]
 [ext_resource type="Resource" uid="uid://dfuhyrlqc0q1n" path="res://dialogues/order_1.tres" id="5_0eop8"]
@@ -14,8 +13,10 @@
 [ext_resource type="Script" path="res://scripts/commands/run_dialogue.gd" id="11_m17v7"]
 [ext_resource type="Resource" uid="uid://ba3cwbeyfo4a4" path="res://dialogues/big_project_1.tres" id="11_wvwid"]
 [ext_resource type="Script" path="res://scripts/commands/initialise_big_project.gd" id="13_vxdqf"]
+[ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="16_hl46x"]
 [ext_resource type="Script" path="res://scripts/commands/start_forge_wtih_forgeable_item.gd" id="18_ymlh1"]
 [ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="19_fm0r5"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="24_8a3y3"]
 [ext_resource type="Script" path="res://scripts/commands/present_big_project_ui.gd" id="24_s8uu1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/expression_guard.gd" id="27_0u6mu"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="27_71lcx"]
@@ -28,6 +29,18 @@ script = ExtResource("6_xy4cx")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_w1wkq"]
 script = ExtResource("7_65erp")
+
+[sub_resource type="GDScript" id="GDScript_y46yg"]
+script/source = "extends Node
+
+@onready var reputation_label = %ReputationLabel
+@export var player_state: PlayerState
+
+
+func _on_turn_in_state_exited():
+	var reputation = player_state.reputation
+	reputation_label.text = \"Reputation: \" + str(reputation)
+"
 
 [sub_resource type="Resource" id="Resource_fp5bp"]
 script = ExtResource("27_0u6mu")
@@ -86,7 +99,6 @@ unique_name_in_owner = true
 [node name="Models" type="Node" parent="."]
 
 [node name="Inventory" type="Node" parent="Models"]
-script = ExtResource("13_vxdqf")
 
 [node name="OrderPool" type="Node" parent="Models"]
 unique_name_in_owner = true
@@ -111,13 +123,15 @@ items = Array[Resource("res://scripts/data_scripts/forgeable_item_data.gd")]([Ex
 forge = NodePath("../../Forge")
 
 [node name="UpdateReputationUI" type="Node" parent="Commands"]
-script = ExtResource("1_moh8k")
+script = SubResource("GDScript_y46yg")
+player_state = ExtResource("16_hl46x")
 
 [node name="PresentBigProjectUI" type="Node" parent="Commands"]
 script = ExtResource("24_s8uu1")
 
 [node name="TurnInOrder" type="Node" parent="Commands"]
 script = ExtResource("1_5d4uv")
+player_state = ExtResource("16_hl46x")
 
 [node name="StateChart" type="Node" parent="."]
 unique_name_in_owner = true
@@ -125,24 +139,24 @@ script = ExtResource("27_71lcx")
 
 [node name="CompoundState" type="Node" parent="StateChart"]
 script = ExtResource("28_jvk88")
-initial_state = NodePath("GetNextDialogue")
+initial_state = NodePath("RunDialogue")
 
-[node name="GetNextDialogue" type="Node" parent="StateChart/CompoundState"]
+[node name="RunDialogue" type="Node" parent="StateChart/CompoundState"]
 script = ExtResource("29_llx32")
 
-[node name="ToCollectReward" type="Node" parent="StateChart/CompoundState/GetNextDialogue"]
+[node name="ToCollectReward" type="Node" parent="StateChart/CompoundState/RunDialogue"]
 script = ExtResource("30_nyi1e")
 to = NodePath("../../CollectReward")
 event = &"dialogue_ended"
 guard = SubResource("Resource_fp5bp")
 
-[node name="ToCraft" type="Node" parent="StateChart/CompoundState/GetNextDialogue"]
+[node name="ToCraft" type="Node" parent="StateChart/CompoundState/RunDialogue"]
 script = ExtResource("30_nyi1e")
 to = NodePath("../../ProcessOrder/Craft")
 event = &"dialogue_ended"
 guard = SubResource("Resource_l0tlu")
 
-[node name="ToBigProject" type="Node" parent="StateChart/CompoundState/GetNextDialogue"]
+[node name="ToBigProject" type="Node" parent="StateChart/CompoundState/RunDialogue"]
 script = ExtResource("30_nyi1e")
 to = NodePath("../../PresentBigProject")
 event = &"dialogue_ended"
@@ -151,8 +165,16 @@ guard = SubResource("Resource_254ar")
 [node name="CollectReward" type="Node" parent="StateChart/CompoundState"]
 script = ExtResource("29_llx32")
 
+[node name="ToNextDialogue" type="Node" parent="StateChart/CompoundState/CollectReward"]
+script = ExtResource("30_nyi1e")
+to = NodePath("../../RunDialogue")
+
 [node name="PresentBigProject" type="Node" parent="StateChart/CompoundState"]
 script = ExtResource("29_llx32")
+
+[node name="ToNextDialogue" type="Node" parent="StateChart/CompoundState/PresentBigProject"]
+script = ExtResource("30_nyi1e")
+to = NodePath("../../RunDialogue")
 
 [node name="ProcessOrder" type="Node" parent="StateChart/CompoundState"]
 script = ExtResource("28_jvk88")
@@ -167,9 +189,14 @@ script = ExtResource("29_llx32")
 [node name="RunMission" type="Node" parent="StateChart/CompoundState/ProcessOrder"]
 script = ExtResource("29_llx32")
 
+[node name="StateChartDebugger" parent="." instance=ExtResource("24_8a3y3")]
+offset_right = 372.0
+offset_bottom = 528.0
+
 [connection signal="forged" from="Forge" to="." method="_on_forge_forged"]
 [connection signal="turned_in" from="OutgoingOrder" to="Commands/TurnInOrder" method="_on_outgoing_order_turned_in"]
-[connection signal="state_entered" from="StateChart/CompoundState/GetNextDialogue" to="Commands/RunDialogue" method="_on_get_next_dialogue_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/RunDialogue" to="Commands/RunDialogue" method="_on_get_next_dialogue_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/PresentBigProject" to="Commands/InitialiseBigProject" method="_on_present_big_project_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/PresentBigProject" to="Commands/PresentBigProjectUI" method="_on_present_big_project_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/ProcessOrder/Craft" to="Commands/StartForgeWithForgeableItem" method="_on_craft_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/ProcessOrder/TurnIn" to="Commands/TurnInOrder" method="_on_turn_in_state_entered"]
