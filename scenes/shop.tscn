@@ -18,10 +18,10 @@
 [ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="16_hl46x"]
 [ext_resource type="Script" path="res://scripts/commands/forge_wtih_forgeable_item.gd" id="18_ymlh1"]
 [ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="19_fm0r5"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="20_ir7qg"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="24_8a3y3"]
 [ext_resource type="Script" path="res://scripts/commands/present_big_project_ui.gd" id="24_s8uu1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/expression_guard.gd" id="27_0u6mu"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="27_71lcx"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="28_jvk88"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="29_llx32"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="30_nyi1e"]
@@ -141,7 +141,7 @@ player_state = ExtResource("16_hl46x")
 
 [node name="StateChart" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("27_71lcx")
+script = ExtResource("20_ir7qg")
 
 [node name="CompoundState" type="Node" parent="StateChart"]
 script = ExtResource("28_jvk88")
