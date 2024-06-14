@@ -1,35 +1,194 @@
-[gd_scene format=3 uid="uid://cipvjavqijy5v"]
+[gd_scene load_steps=3 format=3 uid="uid://cipvjavqijy5v"]
+
+[ext_resource type="PackedScene" uid="uid://clyh2wna2o176" path="res://scenes/inventory_item_cell.tscn" id="1_005i0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ntjoi"]
+font_size = 32
 
 [node name="TestUi" type="Node2D"]
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-offset_right = 960.0
-offset_bottom = 1080.0
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Inventaire"
+label_settings = SubResource("LabelSettings_ntjoi")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 7
 
-[node name="Label" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="VBoxContainer2" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
 layout_mode = 2
-text = "area 1"
 
-[node name="Label2" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="VBoxContainer3" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
 layout_mode = 2
-text = "area 2"
 
-[node name="Label3" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="VBoxContainer4" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
 layout_mode = 2
-text = "area 3"
 
-[node name="Label4" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="VBoxContainer5" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
 layout_mode = 2
-text = "area 4"
 
-[node name="Label5" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="VBoxContainer6" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
 layout_mode = 2
-text = "area 5"
 
-[node name="Label6" type="Label" parent="ScrollContainer/GridContainer"]
+[node name="VBoxContainer7" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
 layout_mode = 2
-text = "area 6"
+
+[node name="VBoxContainer8" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer9" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer10" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer11" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer12" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer13" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer14" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer15" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer16" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer17" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer18" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer19" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer20" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer21" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer22" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer23" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer24" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer25" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer26" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer27" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer28" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer29" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer30" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer31" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer32" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer33" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer34" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer35" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer36" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer37" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer38" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer39" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer40" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer41" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer42" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer43" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer44" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer45" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer46" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer47" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer48" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer49" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer50" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="VBoxContainer51" parent="CanvasLayer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_005i0")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"

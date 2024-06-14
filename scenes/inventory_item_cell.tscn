@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://clyh2wna2o176"]
+
+[ext_resource type="Texture2D" uid="uid://b8m4es6sow0pu" path="res://icon.svg" id="1_py3hr"]
+
+[node name="VBoxContainer2" type="VBoxContainer"]
+custom_minimum_size = Vector2(128, 178)
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Icon" type="Sprite2D" parent="AspectRatioContainer"]
+texture = ExtResource("1_py3hr")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "area 1"
