@@ -34,7 +34,7 @@ The catacombs are full of agile enemies who don't necessarily hit that hard.",
 "text": "Heavy Armour"
 }
 },
-"size": Vector2(382, 446),
+"size": Vector2(382, 461),
 "speaker": 0
 },
 "1_2": {
@@ -47,7 +47,7 @@ The catacombs are full of agile enemies who don't necessarily hit that hard.",
 "text": ""
 }
 },
-"size": Vector2(300, 275),
+"size": Vector2(300, 365),
 "speaker": 0
 },
 "1_3": {
@@ -70,7 +70,7 @@ The catacombs are full of agile enemies who don't necessarily hit that hard.",
 "text": "I can add a hook."
 }
 },
-"size": Vector2(459.72, 396),
+"size": Vector2(459.72, 461),
 "speaker": 0
 },
 "1_4": {
@@ -93,7 +93,7 @@ The catacombs are full of agile enemies who don't necessarily hit that hard.",
 "text": "I can make the armour look scary so enemies are nervous too."
 }
 },
-"size": Vector2(459.72, 396),
+"size": Vector2(459.72, 461),
 "speaker": 0
 },
 "4_1": {
@@ -164,6 +164,10 @@ variables = {
 "challenge_capacity": {
 "type": 2,
 "value": 1.0
+},
+"dialogue_type": {
+"type": 4,
+"value": "mission"
 },
 "item_id": {
 "type": 4,

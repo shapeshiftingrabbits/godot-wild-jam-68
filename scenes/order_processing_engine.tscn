@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bb0j07nh0jf3y"]
-
-[ext_resource type="Script" path="res://scripts/commands/create_reward_from_order.gd" id="1_h45jf"]
-
-[node name="OrderProcessingEngine" type="Node"]
-script = ExtResource("1_h45jf")

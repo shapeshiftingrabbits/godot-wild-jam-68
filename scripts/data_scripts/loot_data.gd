@@ -2,4 +2,5 @@ extends Resource
 
 class_name Loot
 
-@export var name: String
+@export var loot_item: LootItem
+@export var amount: int

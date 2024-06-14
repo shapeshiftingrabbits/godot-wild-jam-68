@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://b8lepltjyi06f"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_vumcx"]
+
+[resource]
+script = ExtResource("1_vumcx")
+starts = {
+"start": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(134, 212),
+"start_id": "start"
+},
+"1_1": {
+"dialogue": "Thank you! We are now able to start {{project_name}}.",
+"offset": Vector2(520, 200),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 358),
+"speaker": -1
+}
+}
+variables = {
+"dialogue_type": {
+"type": 4,
+"value": "big_project_reward"
+},
+"project_name": {
+"type": 4,
+"value": ""
+}
+}
+comments = Array[String]([])
+strays = Array[String]([])
+characters = "res://dialogues/adventurer_list_tuto.tres"

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Loot" load_steps=2 format=3 uid="uid://bpsy1wimkbvao"]
+[gd_resource type="Resource" script_class="LootItem" load_steps=2 format=3 uid="uid://bpsy1wimkbvao"]
 
-[ext_resource type="Script" path="res://scripts/data_scripts/loot_data.gd" id="1_8aoh5"]
+[ext_resource type="Script" path="res://scripts/data_scripts/loot_item_data.gd" id="1_8aoh5"]
 
 [resource]
 script = ExtResource("1_8aoh5")
-name = ""
+name = "Cash"

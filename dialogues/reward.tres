@@ -17,7 +17,7 @@ nodes = {
 "dialogue": "Hey I'm back!
 The mission went {{mission_status}}. To thank you, I am sharing some of the spoils.
 {{reward}}",
-"offset": Vector2(1380, 140),
+"offset": Vector2(1580, 40),
 "options": {
 0: {
 "condition": {},
@@ -82,6 +82,10 @@ The mission went {{mission_status}}. To thank you, I am sharing some of the spoi
 }
 }
 variables = {
+"dialogue_type": {
+"type": 4,
+"value": "mission_reward"
+},
 "mission_score": {
 "type": 4,
 "value": ""
@@ -89,6 +93,10 @@ variables = {
 "mission_status": {
 "type": 4,
 "value": ""
+},
+"mission_type": {
+"type": 4,
+"value": " reward"
 },
 "reward": {
 "type": 4,
