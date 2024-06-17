@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://va7hr21e1a3b"]
+[gd_scene load_steps=5 format=3 uid="uid://va7hr21e1a3b"]
 
 [ext_resource type="PackedScene" uid="uid://clyh2wna2o176" path="res://scenes/inventory_item_cell.tscn" id="1_i0pie"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_view.gd" id="1_x38b5"]
+[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/inventory-test.tres" id="2_838l3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntjoi"]
 font_size = 32
 
 [node name="InventoryView" type="CanvasLayer"]
 script = ExtResource("1_x38b5")
+inventory = ExtResource("2_838l3")
+cell_template = ExtResource("1_i0pie")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -42,60 +45,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 7
-
-[node name="VBoxContainer2" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer3" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer4" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer5" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer6" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer7" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer8" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer9" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer10" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer11" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer12" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer13" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer14" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer15" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer16" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer17" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer18" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
-
-[node name="VBoxContainer19" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("1_i0pie")]
-layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)

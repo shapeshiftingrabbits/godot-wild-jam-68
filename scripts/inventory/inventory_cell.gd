@@ -6,6 +6,8 @@ class_name InventoryCell
 @onready var name_label: Label = $Name
 
 
-func _init(in_name: String, in_icon):
+func set_values(in_name: String, in_icon = null):
+	await self.ready
+	print("set_values : ", in_name)
 	name_label.text = in_name
 	

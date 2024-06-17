@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_rgw4e")
-loot_dictionary = {}
+loot_dictionary = {
+"money": 100,
+"wood": 2
+}
