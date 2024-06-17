@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cipvjavqijy5v"]
+[gd_scene load_steps=3 format=3 uid="uid://cipvjavqijy5v"]
 
 [ext_resource type="PackedScene" uid="uid://va7hr21e1a3b" path="res://scenes/inventory_view.tscn" id="1_lpt71"]
+[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/inventory-test.tres" id="2_fbtn2"]
 
 [node name="TestUi" type="Node2D"]
 
 [node name="InventoryView" parent="." instance=ExtResource("1_lpt71")]
+inventory = ExtResource("2_fbtn2")

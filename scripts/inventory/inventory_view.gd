@@ -4,10 +4,12 @@ class_name InventoryView
 
 @export var inventory: Inventory
 @onready var grid_container = %GridContainer
+@export var cell_template: PackedScene
 
 func show_inventory():
 	for loot in inventory.loot_dictionary:
-		pass
+		var cell = cell_template.instantiate()
+		
 	pass
 
 func disable():

@@ -1,21 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://clyh2wna2o176"]
+[gd_scene load_steps=3 format=3 uid="uid://clyh2wna2o176"]
 
 [ext_resource type="Texture2D" uid="uid://b8m4es6sow0pu" path="res://icon.svg" id="1_py3hr"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory_cell.gd" id="1_t2hkh"]
 
-[node name="VBoxContainer2" type="VBoxContainer"]
+[node name="InventoryCell" type="VBoxContainer"]
 custom_minimum_size = Vector2(128, 178)
 size_flags_horizontal = 3
 size_flags_vertical = 0
+script = ExtResource("1_t2hkh")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-
-[node name="Icon" type="Sprite2D" parent="AspectRatioContainer"]
 texture = ExtResource("1_py3hr")
-centered = false
 
-[node name="Label" type="Label" parent="."]
+[node name="Name" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "area 1"

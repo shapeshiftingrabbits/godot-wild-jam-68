@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://va7hr21e1a3b"]
 
 [ext_resource type="PackedScene" uid="uid://clyh2wna2o176" path="res://scenes/inventory_item_cell.tscn" id="1_i0pie"]
-[ext_resource type="Script" path="res://scripts/inventory_view.gd" id="1_x38b5"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory_view.gd" id="1_x38b5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntjoi"]
 font_size = 32
