@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=34 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/commands/turn_in_order.gd" id="1_5d4uv"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_xy4cx"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_65erp"]
 [ext_resource type="PackedScene" uid="uid://va7hr21e1a3b" path="res://scenes/inventory_view.tscn" id="7_h8lho"]
+[ext_resource type="PackedScene" uid="uid://ds0jd1tjxogbm" path="res://scenes/hud.tscn" id="7_o45i0"]
 [ext_resource type="Script" path="res://scripts/commands/run_mission.gd" id="9_m5gx2"]
 [ext_resource type="Resource" uid="uid://cxrotaaabbgs" path="res://data/catacombs.tres" id="9_w2gox"]
 [ext_resource type="Script" path="res://scripts/commands/set_ui_to_initial-state.gd" id="10_6jutv"]
@@ -65,41 +66,37 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Reputation:"
 
-[node name="IncomingOrder" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="DialogueBox" type="Panel" parent="IncomingOrder"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(256, 128)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 154.0
-offset_top = 407.0
-offset_right = 1054.0
-offset_bottom = 622.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("4_0l17v")
-dialogue_data = ExtResource("5_0eop8")
-start_id = "1"
-options_vertical = true
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_ceoyu"), SubResource("RichTextEffect_w1wkq")])
-
 [node name="Forge" parent="." instance=ExtResource("3_w4lt2")]
 unique_name_in_owner = true
 
 [node name="OutgoingOrder" parent="." instance=ExtResource("5_q02lg")]
 unique_name_in_owner = true
 
-[node name="InventoryView" parent="." instance=ExtResource("7_h8lho")]
+[node name="UI" type="Node" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 128)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -215.0
+offset_right = 450.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+script = ExtResource("4_0l17v")
+dialogue_data = ExtResource("5_0eop8")
+start_id = "1"
+options_vertical = true
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_ceoyu"), SubResource("RichTextEffect_w1wkq")])
+
+[node name="HUD" parent="UI" instance=ExtResource("7_o45i0")]
+
+[node name="InventoryView" parent="UI" instance=ExtResource("7_h8lho")]
 
 [node name="Models" type="Node" parent="."]
 
@@ -218,9 +215,10 @@ offset_right = 372.0
 offset_bottom = 528.0
 initial_node_to_watch = NodePath("../StateChart")
 
-[connection signal="dialogue_ended" from="IncomingOrder/DialogueBox" to="Commands/RunDialogue" method="_on_dialogue_box_dialogue_ended"]
 [connection signal="forged" from="Forge" to="Commands/ForgeWithForgeableItem" method="_on_forge_forged"]
 [connection signal="turned_in" from="OutgoingOrder" to="Commands/TurnInOrder" method="_on_outgoing_order_turned_in"]
+[connection signal="dialogue_ended" from="UI/DialogueBox" to="Commands/RunDialogue" method="_on_dialogue_box_dialogue_ended"]
+[connection signal="inventory_pressed" from="UI/HUD" to="UI/InventoryView" method="show"]
 [connection signal="state_entered" from="StateChart/CompoundState/RunDialogue" to="Commands/RunDialogue" method="_on_run_dialogue_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/RunDialogue" to="Commands/SetUIToInitialState" method="_on_run_dialogue_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/PresentBigProject" to="Commands/InitialiseBigProject" method="_on_present_big_project_state_entered"]
