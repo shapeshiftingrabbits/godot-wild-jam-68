@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Challenge" load_steps=3 format=3 uid="uid://du4w2ra7prg1b"]
 
-[ext_resource type="Resource" uid="uid://bpsy1wimkbvao" path="res://data/money.tres" id="1_pncye"]
+[ext_resource type="Resource" uid="uid://bpsy1wimkbvao" path="res://data/resources/money.tres" id="1_pncye"]
 [ext_resource type="Script" path="res://scripts/data_scripts/challenge_data.gd" id="2_xgvjh"]
 
 [resource]
