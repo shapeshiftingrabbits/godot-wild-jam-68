@@ -12,6 +12,7 @@ func set_values(in_name: String, in_amount: int, in_icon = null):
 	print("set_values : ", in_name)
 	name_label.text = in_name
 	update_amount(in_amount)
-	
+
+
 func update_amount(in_amount: int):
 	amount.text = str(in_amount)

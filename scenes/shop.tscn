@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=36 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/commands/turn_in_order.gd" id="1_5d4uv"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
@@ -10,9 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://va7hr21e1a3b" path="res://scenes/inventory_view.tscn" id="7_h8lho"]
 [ext_resource type="PackedScene" uid="uid://ds0jd1tjxogbm" path="res://scenes/hud.tscn" id="7_o45i0"]
 [ext_resource type="Script" path="res://scripts/commands/run_mission.gd" id="9_m5gx2"]
+[ext_resource type="Resource" uid="uid://85ln107b3wtq" path="res://data/inventory.tres" id="9_vs60l"]
 [ext_resource type="Resource" uid="uid://cxrotaaabbgs" path="res://data/catacombs.tres" id="9_w2gox"]
 [ext_resource type="Script" path="res://scripts/commands/set_ui_to_initial-state.gd" id="10_6jutv"]
 [ext_resource type="Script" path="res://scripts/commands/order_pool.gd" id="10_cm2da"]
+[ext_resource type="PackedScene" uid="uid://sumtirekcq4v" path="res://scenes/debug_view.tscn" id="10_wi02v"]
 [ext_resource type="Script" path="res://scripts/commands/run_dialogue.gd" id="11_m17v7"]
 [ext_resource type="Resource" uid="uid://ba3cwbeyfo4a4" path="res://dialogues/big_project_1.tres" id="11_wvwid"]
 [ext_resource type="Resource" uid="uid://dbbfnurrnfoem" path="res://dialogues/reward.tres" id="13_ed8ut"]
@@ -76,6 +78,7 @@ unique_name_in_owner = true
 
 [node name="DialogueBox" type="Panel" parent="UI"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(256, 128)
 anchors_preset = 7
 anchor_left = 0.5
@@ -97,6 +100,9 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_ceoyu"), Sub
 [node name="HUD" parent="UI" instance=ExtResource("7_o45i0")]
 
 [node name="InventoryView" parent="UI" instance=ExtResource("7_h8lho")]
+inventory = ExtResource("9_vs60l")
+
+[node name="DebugView" parent="UI" instance=ExtResource("10_wi02v")]
 
 [node name="Models" type="Node" parent="."]
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwg5g51qjbxf7"]
+
+[ext_resource type="Script" path="res://scripts/edit_cell.gd" id="1_uwhds"]
+
+[node name="EditCell" type="HBoxContainer"]
+size_flags_vertical = 3
+alignment = 2
+script = ExtResource("1_uwhds")
+
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+
+[node name="AmountLineEdit" type="LineEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="text_submitted" from="AmountLineEdit" to="." method="_on_amount_line_edit_text_submitted"]

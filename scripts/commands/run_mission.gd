@@ -26,6 +26,8 @@ func create_mission_result_dialogue():
 	
 	order_pool.insert_order(reward_dialogue)
 	state_chart.send_event("mission_completed")
+	
+
 
 ## Calculate the success of the [param challenge_capacity] agains a list of [param challenges].
 func _get_loots_from_running_mission(challenge_capacity: int, challenges: Array[Challenge]):
