@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cipvjavqijy5v"]
+[gd_scene load_steps=3 format=3 uid="uid://cipvjavqijy5v"]
 
 [ext_resource type="PackedScene" uid="uid://va7hr21e1a3b" path="res://scenes/inventory_view.tscn" id="1_lpt71"]
+[ext_resource type="PackedScene" uid="uid://ds0jd1tjxogbm" path="res://scenes/hud.tscn" id="2_kxrsv"]
 
 [node name="TestUi" type="Node2D"]
 
+[node name="HUD" parent="." instance=ExtResource("2_kxrsv")]
+
 [node name="InventoryView" parent="." instance=ExtResource("1_lpt71")]
+visible = false
+
+[connection signal="inventory_pressed" from="HUD" to="InventoryView" method="show"]

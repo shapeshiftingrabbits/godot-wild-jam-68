@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds0jd1tjxogbm"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_7rkww"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_7rkww")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 1837.0
+offset_right = 1920.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="InventoryButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[connection signal="pressed" from="HBoxContainer/InventoryButton" to="." method="_on_inventory_button_pressed"]

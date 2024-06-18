@@ -28,7 +28,7 @@ size_flags_stretch_ratio = 2.0
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Inventaire"
+text = "Inventory"
 label_settings = SubResource("LabelSettings_ntjoi")
 horizontal_alignment = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=33 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/commands/turn_in_order.gd" id="1_5d4uv"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://85wqf6pegevs" path="res://scenes/outgoing_order.tscn" id="5_q02lg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_xy4cx"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_65erp"]
+[ext_resource type="PackedScene" uid="uid://va7hr21e1a3b" path="res://scenes/inventory_view.tscn" id="7_h8lho"]
 [ext_resource type="Script" path="res://scripts/commands/run_mission.gd" id="9_m5gx2"]
 [ext_resource type="Resource" uid="uid://cxrotaaabbgs" path="res://data/catacombs.tres" id="9_w2gox"]
 [ext_resource type="Script" path="res://scripts/commands/set_ui_to_initial-state.gd" id="10_6jutv"]
@@ -97,6 +98,8 @@ unique_name_in_owner = true
 
 [node name="OutgoingOrder" parent="." instance=ExtResource("5_q02lg")]
 unique_name_in_owner = true
+
+[node name="InventoryView" parent="." instance=ExtResource("7_h8lho")]
 
 [node name="Models" type="Node" parent="."]
 
