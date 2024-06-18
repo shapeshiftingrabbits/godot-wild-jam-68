@@ -2,12 +2,14 @@ extends VBoxContainer
 
 class_name InventoryCell
 
-@onready var texture_rect = $TextureRect
 @onready var name_label: Label = $Name
+@onready var inventory_item_icon = %InventoryItemIcon
+@onready var amount = %Amount
 
-
-func set_values(in_name: String, in_icon = null):
+## Used to assign the values to the cell after instanciating the packed scene
+func set_values(in_name: String, in_amount: int, in_icon = null):
 	await self.ready
 	print("set_values : ", in_name)
 	name_label.text = in_name
+	amount.text = str(in_amount)
 	

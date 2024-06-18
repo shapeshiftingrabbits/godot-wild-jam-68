@@ -10,12 +10,11 @@ func _ready():
 	show_inventory()
 
 func show_inventory():
-	for loot in inventory.loot_dictionary:
-		print (loot)
+	var loots = inventory.loot_dictionary
+	for loot in loots:
 		var cell: InventoryCell = cell_template.instantiate()
-		cell.set_values( loot)
+		cell.set_values( loot, loots[loot])
 		grid_container.add_child(cell)
-		
 
 
 func disable():

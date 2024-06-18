@@ -4,16 +4,31 @@
 [ext_resource type="Script" path="res://scripts/inventory/inventory_cell.gd" id="1_t2hkh"]
 
 [node name="InventoryCell" type="VBoxContainer"]
-custom_minimum_size = Vector2(128, 178)
+custom_minimum_size = Vector2(128, 158)
 size_flags_horizontal = 3
 size_flags_vertical = 0
 script = ExtResource("1_t2hkh")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="InventoryItemIcon" type="TextureRect" parent="PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_py3hr")
 
-[node name="Name" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 50)
+[node name="Amount" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-text = "area 1"
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Amount"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
