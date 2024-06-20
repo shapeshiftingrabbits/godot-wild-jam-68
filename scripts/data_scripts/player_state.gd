@@ -9,5 +9,7 @@ class_name PlayerState
 
 @export var inventory: Inventory
 
+@export var big_project_ledgers: Array[BigProjectLedger]
+
 func increment_reputation(input_reputation_gain: int = 1):
 	reputation += reputation_gain 
