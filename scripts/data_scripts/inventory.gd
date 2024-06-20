@@ -10,3 +10,10 @@ signal inventory_updated(name: String, amount: int)
 func update_inventory_item( name: String, amount: int):
 	loot_dictionary[name] = amount
 	inventory_updated.emit(name, amount)
+
+func add_to_inventory_item ( name: String, amount: int):
+	print(name, amount)
+	if (!loot_dictionary.has(name)):
+		loot_dictionary[name] = 0
+	var resource_number = loot_dictionary[name]
+	update_inventory_item(name, resource_number + amount )

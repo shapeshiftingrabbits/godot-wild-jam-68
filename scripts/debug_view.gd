@@ -15,12 +15,16 @@ func _ready():
 func fill_grid():
 	var loots = inventory.loot_dictionary
 	for loot in loots:
-		var cell: EditCell = cell_template.instantiate()
-		cell.set_values( loot, loots[loot])
-		cell.set_meta(LOOT_KEY, loot)
-		debug_inventory_list.add_child(cell)
-		debug_inventory_list.set_meta(loot, cell)
-		cell.inventory_item_changed.connect(_on_inventory_item_updated)
+		_add_new_cell(loot, loots[loot])
+
+
+func _add_new_cell(name: String, amount: int):
+	var cell: EditCell = cell_template.instantiate()
+	cell.set_values( name, amount)
+	cell.set_meta(LOOT_KEY, name)
+	cell.inventory_item_changed.connect(_on_inventory_item_updated)
+	debug_inventory_list.add_child(cell)
+	debug_inventory_list.set_meta(name, cell)
 
 
 func update_grid():
@@ -38,4 +42,7 @@ func _on_inventory_item_updated(in_name: String, in_amount: int):
 
 func _update_item(in_name: String, in_amount: int):
 	var cell = debug_inventory_list.get_meta(in_name)
-	cell.update_amount(in_amount)
+	if (cell == null):
+		_add_new_cell(in_name, in_amount)
+	else:
+		cell.update_amount(in_amount)

@@ -4,6 +4,7 @@ class_name RunMission
 
 @export var missions: Array[Mission]
 @export var reward_dialogue: DialogueData = null
+@export var inventory: Inventory
 @onready var dialogue_box = %DialogueBox
 @onready var order_pool: OrderPool = %OrderPool
 @onready var state_chart = %StateChart
@@ -15,7 +16,12 @@ func create_mission_result_dialogue():
 	# Get score and encounters results.
 	var challenge_capacity: int = dialogue_box.get_variable("{{challenge_capacity}}")
 	var beaten_challenges: Array[Challenge] = _get_loots_from_running_mission(challenge_capacity, mission.challenges)
+	
 	var score = _get_score(beaten_challenges.size(), mission.challenges.size())
+	
+	for challenge: Challenge in beaten_challenges:
+		print("resource name", challenge.loot_item.resource_name)
+		inventory.add_to_inventory_item(challenge.loot_item.resource_name, challenge.amount)
 	
 	# Get the speaker from the dialogue the dialogue
 	var dialogue_node = DialogueHelper.get_dialogue_node(dialogue_box)

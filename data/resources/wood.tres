@@ -3,5 +3,6 @@
 [ext_resource type="Script" path="res://scripts/data_scripts/loot_item_data.gd" id="1_wn553"]
 
 [resource]
+resource_name = "wood"
 script = ExtResource("1_wn553")
 name = "Wood"
