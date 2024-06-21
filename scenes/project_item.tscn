@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://0qq670syte67"]
+
+[node name="ProjectItem" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "item name"
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Ship"

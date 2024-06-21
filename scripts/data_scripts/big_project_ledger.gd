@@ -2,6 +2,8 @@ extends Resource
 
 class_name BigProjectLedger
 
+signal is_completed
+
 var ledger: Array[LedgerItem]
 var completed: bool = false
 var started: bool = false
@@ -19,5 +21,7 @@ func accept_big_project():
 	
 	
 func check_ledger():
-	ledger.all(func (item: LedgerItem): item.completed())
+	completed = ledger.all(func (item: LedgerItem): item.completed())
+	if ( completed):
+		is_completed.emit()
 		
