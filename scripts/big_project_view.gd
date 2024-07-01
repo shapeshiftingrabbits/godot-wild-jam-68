@@ -15,7 +15,8 @@ class_name BigProjectView
 var list_adapter: ListAdapter
 
 func present(in_big_project_ledger: BigProjectLedger):
-	big_project_ledger = in_big_project_ledger	
+	big_project_ledger = in_big_project_ledger
+		
 	update_layout()
 
 

@@ -7,12 +7,13 @@ class_name ProjectItemCell
 @onready var title_label = %TitleLabel
 @onready var available_label = %AvailableLabel
 @onready var required_label = %RequiredLabel
+
 var inventory: Inventory
 var ledger_item: LedgerItem
 
 
 ## Used to assign the values to the cell after instanciating the packed scene
-func set_values(in_ledger_item: LedgerItem):
+func set_model():
 	await self.ready
 	_update_layout()
 
