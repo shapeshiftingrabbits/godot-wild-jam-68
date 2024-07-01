@@ -8,4 +8,3 @@ script = ExtResource("1_12m36")
 reputation = 0
 reputation_gain = 1
 inventory = ExtResource("1_r6epy")
-big_project_ledgers = Array[Resource("res://scripts/data_scripts/big_project_ledger.gd")]([])

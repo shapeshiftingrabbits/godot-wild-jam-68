@@ -4,10 +4,11 @@ class_name BigProjectLedger
 
 signal is_completed
 
+@export var big_project: BigProject
+
 var ledger: Array[LedgerItem]
 var completed: bool = false
 var started: bool = false
-var big_project: BigProject
 var title: String: 
 	get: 
 		return big_project.title

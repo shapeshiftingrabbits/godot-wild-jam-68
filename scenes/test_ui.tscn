@@ -4,17 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://ds0jd1tjxogbm" path="res://scenes/hud.tscn" id="2_kxrsv"]
 [ext_resource type="PackedScene" uid="uid://cwg5g51qjbxf7" path="res://scenes/edit_cell.tscn" id="3_jok1d"]
 [ext_resource type="PackedScene" uid="uid://sumtirekcq4v" path="res://scenes/debug_view.tscn" id="3_qebil"]
-[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/inventory-test.tres" id="4_eqy0j"]
+[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/test/inventory-test.tres" id="4_eqy0j"]
 [ext_resource type="PackedScene" uid="uid://btgqytubdvobo" path="res://scenes/big_project_view.tscn" id="6_63u5v"]
 
 [node name="TestUi" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("2_kxrsv")]
+visible = false
 
 [node name="InventoryView" parent="." instance=ExtResource("1_lpt71")]
 visible = false
 
 [node name="DebugView" parent="." instance=ExtResource("3_qebil")]
+visible = false
 inventory = ExtResource("4_eqy0j")
 cell_template = ExtResource("3_jok1d")
 

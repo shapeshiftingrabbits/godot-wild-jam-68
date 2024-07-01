@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://clyh2wna2o176" path="res://scenes/inventory_item_cell.tscn" id="1_i0pie"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_view.gd" id="1_x38b5"]
-[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/inventory-test.tres" id="2_838l3"]
+[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/test/inventory-test.tres" id="2_838l3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntjoi"]
 font_size = 32

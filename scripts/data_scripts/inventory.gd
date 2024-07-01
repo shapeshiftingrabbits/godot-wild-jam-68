@@ -17,3 +17,5 @@ func add_to_inventory_item ( name: String, amount: int):
 	var resource_number = loot_dictionary[name]
 	update_inventory_item(name, resource_number + amount )
 
+func get_amount_for_item( name: String):
+	return loot_dictionary.get(name)
