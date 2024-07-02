@@ -8,8 +8,7 @@ class_name ProjectItemCell
 @onready var available_label = %AvailableLabel
 @onready var required_label = %RequiredLabel
 
-var inventory: Inventory
-var ledger_item: LedgerItem
+var model: ProjectItemModel
 
 
 ## Used to assign the values to the cell after instanciating the packed scene
@@ -19,14 +18,11 @@ func set_model():
 
 
 func _update_layout():
-	var name = ledger_item.loot_item.name
-	var amount = inventory.get_amount_for_item(name)
-	#available_label.text = inventory.
-	title_label.text = name
-	required_label.text = str(ledger_item.loot_item.expected_amount)
-	available_label.text = str(ledger_item.loot_item.current_amount)
-	button.disabled = ledger_item.completed()
+	title_label.text = model.item_name
+	required_label.text = str(model.expected_amount)
+	available_label.text = str(model.available_amount)
+	button.disabled = model.is_completed
 
 
 func _on_button_pressed():
-	pass # Replace with function body.
+	model.deliver_item()
