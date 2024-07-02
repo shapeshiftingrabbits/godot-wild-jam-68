@@ -5,6 +5,7 @@ class_name BigProjectView
 @export var cell_template: PackedScene
 @export var player_state: PlayerState
 @export var big_project_ledger: BigProjectLedger
+@export var inventory: Inventory
 
 @onready var list = %List
 
@@ -16,7 +17,11 @@ var list_adapter: ListAdapter
 
 func present(in_big_project_ledger: BigProjectLedger):
 	big_project_ledger = in_big_project_ledger
-		
+	var models: Array = []
+	for ledger in big_project_ledger.ledger:
+		var model = ProjectItemModel.new(ledger, inventory)
+		models.push_back(model)
+	list_adapter = ListAdapter.new(models, list, cell_template)
 	update_layout()
 
 

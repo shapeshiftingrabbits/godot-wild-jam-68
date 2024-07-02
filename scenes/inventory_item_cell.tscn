@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://clyh2wna2o176"]
 
+[ext_resource type="Script" path="res://scripts/ui/inventory/inventory_cell.gd" id="1_5sc4v"]
 [ext_resource type="Texture2D" uid="uid://b8m4es6sow0pu" path="res://icon.svg" id="1_py3hr"]
-[ext_resource type="Script" path="res://scripts/inventory/inventory_cell.gd" id="1_t2hkh"]
 
 [node name="InventoryCell" type="VBoxContainer"]
 custom_minimum_size = Vector2(128, 158)
 size_flags_horizontal = 3
 size_flags_vertical = 0
-script = ExtResource("1_t2hkh")
+script = ExtResource("1_5sc4v")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

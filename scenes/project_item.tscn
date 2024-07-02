@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4oj8mk4shh8d"]
 
-[ext_resource type="Script" path="res://scripts/project_item_cell.gd" id="1_x8vbp"]
+[ext_resource type="Script" path="res://scripts/ui/big_project/project_item_cell.gd" id="1_b4txq"]
 
 [node name="ProjectItem" type="HBoxContainer"]
-script = ExtResource("1_x8vbp")
+script = ExtResource("1_b4txq")
 
 [node name="TitleLabel" type="Label" parent="."]
 unique_name_in_owner = true

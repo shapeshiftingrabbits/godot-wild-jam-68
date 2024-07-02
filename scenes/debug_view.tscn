@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://sumtirekcq4v"]
 
-[ext_resource type="Script" path="res://scripts/debug_view.gd" id="1_avnef"]
+[ext_resource type="Script" path="res://scripts/ui/debug_view/debug_view.gd" id="1_ou4dk"]
 
 [node name="DebugView" type="CanvasLayer"]
-script = ExtResource("1_avnef")
+script = ExtResource("1_ou4dk")
 
 [node name="Root" type="VBoxContainer" parent="."]
 anchors_preset = 6

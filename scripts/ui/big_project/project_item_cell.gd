@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends ListCellView
 
 class_name ProjectItemCell
 
@@ -8,12 +8,10 @@ class_name ProjectItemCell
 @onready var available_label = %AvailableLabel
 @onready var required_label = %RequiredLabel
 
-var model: ProjectItemModel
-
 
 ## Used to assign the values to the cell after instanciating the packed scene
-func set_model():
-	await self.ready
+func bind(model: CellModel):
+	super(model)
 	_update_layout()
 
 
