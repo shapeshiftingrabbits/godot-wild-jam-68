@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://ds0jd1tjxogbm"]
 
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_aql3o"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hd1x5"]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_aql3o")
+script = ExtResource("1_hd1x5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 1

@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwg5g51qjbxf7"]
 
-[ext_resource type="Script" path="res://scripts/ui/debug_view/edit_cell.gd" id="1_4u8yx"]
+[ext_resource type="Script" path="res://scripts/ui/debug_view/edit_cell.gd" id="1_yk1ja"]
 
 [node name="EditCell" type="HBoxContainer"]
 size_flags_vertical = 3
 alignment = 2
-script = ExtResource("1_4u8yx")
+script = ExtResource("1_yk1ja")
 
 [node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true

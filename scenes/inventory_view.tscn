@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://va7hr21e1a3b"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory/inventory_view.gd" id="1_fk7rx"]
 [ext_resource type="PackedScene" uid="uid://clyh2wna2o176" path="res://scenes/inventory_item_cell.tscn" id="1_i0pie"]
+[ext_resource type="Script" path="res://scripts/ui/inventory/inventory_view.gd" id="1_prmgc"]
 [ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/test/inventory-test.tres" id="2_838l3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntjoi"]
 font_size = 32
 
 [node name="InventoryView" type="CanvasLayer"]
-script = ExtResource("1_fk7rx")
+script = ExtResource("1_prmgc")
 inventory = ExtResource("2_838l3")
 cell_template = ExtResource("1_i0pie")
 

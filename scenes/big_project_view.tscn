@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://btgqytubdvobo"]
+[gd_scene load_steps=7 format=3 uid="uid://btgqytubdvobo"]
 
 [ext_resource type="Script" path="res://scripts/ui/big_project/big_project_view.gd" id="1_bhoj2"]
 [ext_resource type="PackedScene" uid="uid://c4oj8mk4shh8d" path="res://scenes/project_item.tscn" id="2_sc7xx"]
 [ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="3_u17h5"]
 [ext_resource type="Resource" uid="uid://ce7a2rwoxovbk" path="res://data/test/big_project_ledger_test.tres" id="4_3q60y"]
+[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/test/inventory-test.tres" id="5_mu5l1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntjoi"]
 font_size = 32
@@ -13,6 +14,7 @@ script = ExtResource("1_bhoj2")
 cell_template = ExtResource("2_sc7xx")
 player_state = ExtResource("3_u17h5")
 big_project_ledger = ExtResource("4_3q60y")
+inventory = ExtResource("5_mu5l1")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

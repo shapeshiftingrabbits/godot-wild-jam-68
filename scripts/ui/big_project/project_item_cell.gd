@@ -12,6 +12,7 @@ class_name ProjectItemCell
 ## Used to assign the values to the cell after instanciating the packed scene
 func bind(model: CellModel):
 	super(model)
+	await self.ready
 	_update_layout()
 
 

@@ -15,6 +15,6 @@ func _init(in_inventory: Inventory, in_item_key: String):
 	inventory.inventory_updated.connect(_on_inventory_updated)
 
 
-func _on_inventory_updated(model_key: String , amount: int):
-	if (model_key == item_key):
+func _on_inventory_updated(in_item_key: String , amount: int):
+	if (in_item_key == item_key):
 		updated.emit()

@@ -46,7 +46,7 @@ func add_cell_to_list(model: RefCounted):
 	cell.set_meta(MODEL_KEY, model)
 	if (!cell.has_method("bind")):
 		printerr("The cell object needs a bind method, see documentation of the ListAdapter.")
-	cell.bind( model.item_key, model)
+	cell.bind( model)
 	return cell
 
 
