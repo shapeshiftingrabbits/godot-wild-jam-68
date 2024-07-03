@@ -12,12 +12,14 @@
 [node name="HUD" parent="." instance=ExtResource("2_kxrsv")]
 
 [node name="InventoryView" parent="." instance=ExtResource("1_lpt71")]
+visible = false
 
 [node name="DebugView" parent="." instance=ExtResource("3_qebil")]
+visible = false
 inventory = ExtResource("4_eqy0j")
 cell_template = ExtResource("3_jok1d")
 
 [node name="BigProjectView" parent="." instance=ExtResource("6_63u5v")]
-visible = false
 
+[connection signal="big_project_pressed" from="HUD" to="BigProjectView" method="present"]
 [connection signal="inventory_pressed" from="HUD" to="InventoryView" method="show"]

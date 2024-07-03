@@ -20,7 +20,7 @@ var reward_description: String:
 	get: 
 		return big_project.description
 
-func _initialiase_from_dialogue( big_projects_dialogue: DialogueData):
+func init_from_dialogue( big_projects_dialogue: DialogueData):
 	var big_project_id = big_projects_dialogue.variables["big_project_id"].value
 	var loaded_big_project: BigProject = load("res://data/big_projects/%s.tres" % big_project_id)
 	big_project = loaded_big_project

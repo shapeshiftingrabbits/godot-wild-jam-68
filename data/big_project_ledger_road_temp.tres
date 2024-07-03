@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="BigProjectLedger" load_steps=2 format=3 uid="uid://bgdfi6h1o1hcm"]
+[gd_resource type="Resource" script_class="BigProjectLedger" load_steps=3 format=3 uid="uid://bgdfi6h1o1hcm"]
 
 [ext_resource type="Script" path="res://scripts/data_scripts/big_project_ledger.gd" id="1_mq1m3"]
+[ext_resource type="Resource" uid="uid://cy5wn2re4o1mb" path="res://data/big_projects/big_project_construct_road.tres" id="1_uv01t"]
 
 [resource]
 script = ExtResource("1_mq1m3")
+big_project = ExtResource("1_uv01t")

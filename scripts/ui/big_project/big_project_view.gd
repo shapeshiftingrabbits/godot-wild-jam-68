@@ -15,8 +15,18 @@ class_name BigProjectView
 
 var list_adapter: ListAdapter
 
+func _ready():
+	if (big_project_ledger):
+		initialise()
+
+
 func present(in_big_project_ledger: BigProjectLedger):
-	big_project_ledger = in_big_project_ledger
+	if (in_big_project_ledger):
+		big_project_ledger = in_big_project_ledger
+	initialise()
+
+
+func initialise():
 	var models: Array = []
 	for ledger in big_project_ledger.ledger:
 		var model = ProjectItemModel.new(ledger, inventory)
@@ -37,4 +47,4 @@ func assign_big_project_to_player():
 	
 
 func _on_button_pressed():
-	pass # Replace with function body.
+	hide()

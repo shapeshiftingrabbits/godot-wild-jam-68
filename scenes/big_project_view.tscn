@@ -53,9 +53,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ProjectItem" parent="PanelContainer/VBoxContainer/ScrollContainer/List" instance=ExtResource("2_sc7xx")]
-layout_mode = 2
-
 [node name="RewardDescription" type="Label" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
