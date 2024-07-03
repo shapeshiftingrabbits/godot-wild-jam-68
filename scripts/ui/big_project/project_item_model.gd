@@ -1,4 +1,4 @@
-extends Node
+extends CellModel
 
 class_name ProjectItemModel
 

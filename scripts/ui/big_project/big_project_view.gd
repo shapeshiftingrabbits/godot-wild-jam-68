@@ -17,6 +17,7 @@ var list_adapter: ListAdapter
 
 func _ready():
 	if (big_project_ledger):
+		big_project_ledger.init_with_big_project()
 		initialise()
 
 

@@ -24,10 +24,18 @@ func init_from_dialogue( big_projects_dialogue: DialogueData):
 	var big_project_id = big_projects_dialogue.variables["big_project_id"].value
 	var loaded_big_project: BigProject = load("res://data/big_projects/%s.tres" % big_project_id)
 	big_project = loaded_big_project
-	var ledger_items = big_project.loots.map(func (loot: Loot): return parse_leger_item(loot))
-	ledger.assign(ledger_items)
+	create_ledger()
 	#for ledger_item in ledger:
 		#print(ledger_item.loot_item.name, ledger_item.current_amount, ledger_item.expected_amount)
+
+func init_with_big_project():
+	create_ledger()
+
+
+func create_ledger():
+	var ledger_items = big_project.loots.map(func (loot: Loot): return parse_leger_item(loot))
+	ledger.assign(ledger_items)
+
 
 func parse_leger_item(loot: Loot):
 	var ledger_item = LedgerItem.new(loot.loot_item, loot.amount)
