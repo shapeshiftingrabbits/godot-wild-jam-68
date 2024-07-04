@@ -17,7 +17,7 @@ func bind(model: CellModel):
 
 
 func _update_layout():
-	title_label.text = model.item_name
+	title_label.text = model.item_name_description
 	required_label.text = str(model.expected_amount)
 	available_label.text = str(model.available_amount)
 	button.disabled = model.is_completed

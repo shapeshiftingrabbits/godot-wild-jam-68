@@ -39,7 +39,7 @@ func create_ledger():
 
 func parse_leger_item(loot: Loot):
 	var ledger_item = LedgerItem.new(loot.loot_item, loot.amount)
-	ledger_map[loot.loot_item.name] = ledger_item
+	ledger_map[loot.loot_item.key] = ledger_item
 	return ledger_item
 	
 
