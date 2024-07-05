@@ -8,7 +8,7 @@ class_name InventoryCell
 
 var cell_model: InventoryCellModel:
 	get:
-		return model as InventoryCellModel
+		return _model as InventoryCellModel
 
 ## Used to assign the values to the cell after instanciating the packed scene
 func bind( in_model: CellModel):

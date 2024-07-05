@@ -2,7 +2,7 @@ extends BoxContainer
 
 class_name ListCellView
 
-var model: CellModel
+var _model: CellModel
 
 func bind( in_model: CellModel):
-	model = in_model
+	_model = in_model

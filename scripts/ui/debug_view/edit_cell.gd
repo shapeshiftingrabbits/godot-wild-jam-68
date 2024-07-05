@@ -7,6 +7,9 @@ signal inventory_item_changed( name:String, amount:int)
 @onready var amount_line_edit = %AmountLineEdit
 @onready var name_label = %NameLabel
 
+var model: EditCellModel:
+	get:
+		return _model as EditCellModel
 
 func update_amount(in_amount: int):
 	amount_line_edit.text = str(in_amount)

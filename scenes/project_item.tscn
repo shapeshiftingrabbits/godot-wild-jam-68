@@ -2,30 +2,53 @@
 
 [ext_resource type="Script" path="res://scripts/ui/big_project/project_item_cell.gd" id="1_dmcgm"]
 
-[node name="ProjectItem" type="HBoxContainer"]
+[node name="ProjectItemCell" type="VBoxContainer"]
+offset_left = 390.0
+offset_right = 390.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
 script = ExtResource("1_dmcgm")
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="CellLayout" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CellLayout"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "item name"
 
-[node name="AvailableLabel" type="Label" parent="."]
+[node name="ShippedLayout" type="HBoxContainer" parent="CellLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Shipped" type="Label" parent="CellLayout/ShippedLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shipped"
+
+[node name="ShippingLayout" type="HBoxContainer" parent="CellLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AvailableLabel" type="Label" parent="CellLayout/ShippingLayout"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Available:"
 
-[node name="RequiredLabel" type="Label" parent="."]
+[node name="RequiredLabel" type="Label" parent="CellLayout/ShippingLayout"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Needed:"
 
-[node name="Button" type="Button" parent="."]
+[node name="ShipButton" type="Button" parent="CellLayout/ShippingLayout"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Ship"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CellLayout/ShippingLayout/ShipButton" to="." method="_on_ship_button_pressed"]

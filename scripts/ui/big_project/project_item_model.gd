@@ -32,6 +32,9 @@ func _init(in_ledger_item: LedgerItem, in_inventory:Inventory):
 
 
 func deliver_item():
-	_inventory.substract_to_inventory_item( item_key, expected_amount)
+	var success = _inventory.substract_to_inventory_item( item_key, expected_amount)
+	if (success):
+		_ledger_item.current_amount = expected_amount
+		updated.emit()
 
 
