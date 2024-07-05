@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://btgqytubdvobo"]
+
+[ext_resource type="Script" path="res://scripts/ui/big_project/big_project_tracker_view.gd" id="1_bhoj2"]
+[ext_resource type="PackedScene" uid="uid://c4oj8mk4shh8d" path="res://scenes/big_project/project_item_cell.tscn" id="2_juyys"]
+[ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="3_u17h5"]
+[ext_resource type="Resource" uid="uid://ce7a2rwoxovbk" path="res://data/test/big_project_ledger_test.tres" id="4_3q60y"]
+[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/test/inventory-test.tres" id="5_mu5l1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ntjoi"]
+font_size = 32
+
+[node name="BigProjectTrackerView" type="CanvasLayer"]
+script = ExtResource("1_bhoj2")
+cell_template = ExtResource("2_juyys")
+player_state = ExtResource("3_u17h5")
+big_project_ledger = ExtResource("4_3q60y")
+inventory = ExtResource("5_mu5l1")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_ntjoi")
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Description"
+label_settings = SubResource("LabelSettings_ntjoi")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RewardDescription" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reward"
+label_settings = SubResource("LabelSettings_ntjoi")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_button_pressed"]

@@ -1,10 +1,12 @@
 extends CanvasLayer
 
-class_name BigProjectView
+class_name BigProjectPresentingView
 
 @export var cell_template: PackedScene
 @export var player_state: PlayerState
+## Assign via interface for testing
 @export var big_project_ledger: BigProjectLedger
+## Assign via interface for testing
 @export var inventory: Inventory
 
 @onready var list = %List
@@ -21,10 +23,13 @@ func _ready():
 		initialise()
 
 
-func present(in_big_project_ledger: BigProjectLedger):
+func present(in_big_project_ledger: BigProjectLedger, in_player_state: PlayerState):
 	if (in_big_project_ledger):
 		big_project_ledger = in_big_project_ledger
+		player_state = in_player_state
+		inventory = player_state.inventory
 	initialise()
+	show()
 
 
 func initialise():
@@ -43,9 +48,9 @@ func update_layout():
 
 
 func assign_big_project_to_player():
-	player_state.current_big_project_ledger = big_project_ledger
-	player_state.big_project_ledgers.push_back(big_project_ledger)
-	
+	player_state.track_big_project_ledger( big_project_ledger)
+
 
 func _on_button_pressed():
+	assign_big_project_to_player()
 	hide()

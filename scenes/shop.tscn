@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c010sfubpw1uv"]
+[gd_scene load_steps=38 format=3 uid="uid://c010sfubpw1uv"]
 
 [ext_resource type="Script" path="res://scripts/commands/turn_in_order.gd" id="1_5d4uv"]
 [ext_resource type="PackedScene" uid="uid://c4y3fbn5as1i3" path="res://scenes/forge.tscn" id="3_w4lt2"]
@@ -12,14 +12,15 @@
 [ext_resource type="Script" path="res://scripts/commands/run_mission.gd" id="9_m5gx2"]
 [ext_resource type="Resource" uid="uid://85ln107b3wtq" path="res://data/inventory.tres" id="9_vs60l"]
 [ext_resource type="Resource" uid="uid://cxrotaaabbgs" path="res://data/catacombs.tres" id="9_w2gox"]
-[ext_resource type="Script" path="res://scripts/commands/set_ui_to_initial-state.gd" id="10_6jutv"]
+[ext_resource type="Script" path="res://scripts/commands/set_ui_to_initial_state.gd" id="10_6jutv"]
 [ext_resource type="Script" path="res://scripts/commands/order_pool.gd" id="10_cm2da"]
 [ext_resource type="PackedScene" uid="uid://sumtirekcq4v" path="res://scenes/debug_view.tscn" id="10_wi02v"]
+[ext_resource type="PackedScene" uid="uid://btgqytubdvobo" path="res://scenes/big_project/big_project_tracker_view.tscn" id="10_x8y81"]
+[ext_resource type="PackedScene" uid="uid://ruc4yqivr3ig" path="res://scenes/big_project/big_project_presenting_view.tscn" id="11_4u8nc"]
 [ext_resource type="PackedScene" uid="uid://cwg5g51qjbxf7" path="res://scenes/edit_cell.tscn" id="11_kgysr"]
 [ext_resource type="Script" path="res://scripts/commands/run_dialogue.gd" id="11_m17v7"]
 [ext_resource type="Resource" uid="uid://ba3cwbeyfo4a4" path="res://dialogues/big_project_1.tres" id="11_wvwid"]
 [ext_resource type="Resource" uid="uid://dbbfnurrnfoem" path="res://dialogues/reward.tres" id="13_ed8ut"]
-[ext_resource type="Script" path="res://scripts/commands/initialise_big_project.gd" id="13_vxdqf"]
 [ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="16_hl46x"]
 [ext_resource type="Script" path="res://scripts/commands/forge_wtih_forgeable_item.gd" id="18_ymlh1"]
 [ext_resource type="Resource" uid="uid://cqo6kt10vv5ca" path="res://data/shield.tres" id="19_fm0r5"]
@@ -101,7 +102,20 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_ceoyu"), Sub
 [node name="HUD" parent="UI" instance=ExtResource("7_o45i0")]
 
 [node name="InventoryView" parent="UI" instance=ExtResource("7_h8lho")]
+visible = false
 inventory = ExtResource("9_vs60l")
+
+[node name="BigProjectTrackerView" parent="UI" instance=ExtResource("10_x8y81")]
+unique_name_in_owner = true
+visible = false
+big_project_ledger = null
+inventory = null
+
+[node name="BigProjectPresentingView" parent="UI" instance=ExtResource("11_4u8nc")]
+unique_name_in_owner = true
+visible = false
+big_project_ledger = null
+inventory = null
 
 [node name="DebugView" parent="UI" instance=ExtResource("10_wi02v")]
 inventory = ExtResource("9_vs60l")
@@ -128,9 +142,6 @@ missions = Array[Resource("res://scripts/data_scripts/mission_data.gd")]([ExtRes
 reward_dialogue = ExtResource("13_ed8ut")
 inventory = ExtResource("9_vs60l")
 
-[node name="InitialiseBigProject" type="Node" parent="Commands"]
-script = ExtResource("13_vxdqf")
-
 [node name="ForgeWithForgeableItem" type="Node" parent="Commands" node_paths=PackedStringArray("forge")]
 script = ExtResource("18_ymlh1")
 items = Array[Resource("res://scripts/data_scripts/forgeable_item_data.gd")]([ExtResource("19_fm0r5")])
@@ -142,6 +153,9 @@ player_state = ExtResource("16_hl46x")
 
 [node name="PresentBigProjectUI" type="Node" parent="Commands"]
 script = ExtResource("24_s8uu1")
+player_state = ExtResource("16_hl46x")
+
+[node name="ShowBigProjectTrackerUI" type="Node" parent="Commands"]
 
 [node name="TurnInOrder" type="Node" parent="Commands"]
 script = ExtResource("1_5d4uv")
@@ -226,10 +240,10 @@ initial_node_to_watch = NodePath("../StateChart")
 [connection signal="forged" from="Forge" to="Commands/ForgeWithForgeableItem" method="_on_forge_forged"]
 [connection signal="turned_in" from="OutgoingOrder" to="Commands/TurnInOrder" method="_on_outgoing_order_turned_in"]
 [connection signal="dialogue_ended" from="UI/DialogueBox" to="Commands/RunDialogue" method="_on_dialogue_box_dialogue_ended"]
+[connection signal="big_project_pressed" from="UI/HUD" to="UI/BigProjectTrackerView" method="present"]
 [connection signal="inventory_pressed" from="UI/HUD" to="UI/InventoryView" method="show"]
 [connection signal="state_entered" from="StateChart/CompoundState/RunDialogue" to="Commands/RunDialogue" method="_on_run_dialogue_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/RunDialogue" to="Commands/SetUIToInitialState" method="_on_run_dialogue_state_entered"]
-[connection signal="state_entered" from="StateChart/CompoundState/PresentBigProject" to="Commands/InitialiseBigProject" method="_on_present_big_project_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/PresentBigProject" to="Commands/PresentBigProjectUI" method="_on_present_big_project_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/ProcessOrder/Craft" to="Commands/ForgeWithForgeableItem" method="_on_craft_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/ProcessOrder/TurnIn" to="Commands/TurnInOrder" method="_on_turn_in_state_entered"]

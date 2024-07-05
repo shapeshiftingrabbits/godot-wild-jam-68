@@ -1,13 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4oj8mk4shh8d"]
 
-[ext_resource type="Script" path="res://scripts/ui/big_project/project_item_cell.gd" id="1_dmcgm"]
+[ext_resource type="Script" path="res://scripts/ui/big_project/project_item_cell.gd" id="1_byfe5"]
 
 [node name="ProjectItemCell" type="VBoxContainer"]
 offset_left = 390.0
 offset_right = 390.0
 offset_bottom = 31.0
 size_flags_horizontal = 3
-script = ExtResource("1_dmcgm")
+script = ExtResource("1_byfe5")
 
 [node name="CellLayout" type="HBoxContainer" parent="."]
 layout_mode = 2

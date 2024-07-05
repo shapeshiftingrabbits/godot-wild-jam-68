@@ -15,3 +15,8 @@ var current_big_project_ledger: BigProjectLedger
 
 func increment_reputation(input_reputation_gain: int = 1):
 	reputation += reputation_gain 
+	
+
+func track_big_project_ledger(big_project_ledger: BigProjectLedger):
+	current_big_project_ledger = big_project_ledger
+	big_project_ledgers.push_back(big_project_ledger)
