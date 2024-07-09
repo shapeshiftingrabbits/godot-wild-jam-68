@@ -196,6 +196,7 @@ script = ExtResource("29_llx32")
 [node name="ToNextDialogue" type="Node" parent="StateChart/CompoundState/CollectReward"]
 script = ExtResource("30_nyi1e")
 to = NodePath("../../RunDialogue")
+event = &"big_project_accepted"
 
 [node name="PresentBigProject" type="Node" parent="StateChart/CompoundState"]
 script = ExtResource("29_llx32")
@@ -203,6 +204,7 @@ script = ExtResource("29_llx32")
 [node name="ToNextDialogue" type="Node" parent="StateChart/CompoundState/PresentBigProject"]
 script = ExtResource("30_nyi1e")
 to = NodePath("../../RunDialogue")
+event = &"big_project_accepted"
 
 [node name="ProcessOrder" type="Node" parent="StateChart/CompoundState"]
 script = ExtResource("28_jvk88")
@@ -242,6 +244,7 @@ initial_node_to_watch = NodePath("../StateChart")
 [connection signal="dialogue_ended" from="UI/DialogueBox" to="Commands/RunDialogue" method="_on_dialogue_box_dialogue_ended"]
 [connection signal="big_project_pressed" from="UI/HUD" to="UI/BigProjectTrackerView" method="present"]
 [connection signal="inventory_pressed" from="UI/HUD" to="UI/InventoryView" method="show"]
+[connection signal="big_project_accepted" from="UI/BigProjectPresentingView" to="Commands/PresentBigProjectUI" method="_on_big_project_presenting_view_big_project_accepted"]
 [connection signal="state_entered" from="StateChart/CompoundState/RunDialogue" to="Commands/RunDialogue" method="_on_run_dialogue_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/RunDialogue" to="Commands/SetUIToInitialState" method="_on_run_dialogue_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/PresentBigProject" to="Commands/PresentBigProjectUI" method="_on_present_big_project_state_entered"]

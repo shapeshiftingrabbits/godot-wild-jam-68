@@ -2,6 +2,8 @@ extends CanvasLayer
 
 class_name BigProjectPresentingView
 
+signal big_project_accepted
+
 @export var cell_template: PackedScene
 @export var player_state: PlayerState
 ## Assign via interface for testing
@@ -49,6 +51,7 @@ func update_layout():
 
 func assign_big_project_to_player():
 	player_state.track_big_project_ledger( big_project_ledger)
+	big_project_accepted.emit()
 
 
 func _on_button_pressed():
