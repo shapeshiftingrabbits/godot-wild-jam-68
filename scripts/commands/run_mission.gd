@@ -20,7 +20,7 @@ func create_mission_result_dialogue():
 	var score = _get_score(beaten_challenges.size(), mission.challenges.size())
 	
 	for challenge: Challenge in beaten_challenges:
-		print("resource name", challenge.loot_item.resource_name)
+		print("resource name :", challenge.loot_item.resource_name)
 		inventory.add_to_inventory_item(challenge.loot_item.resource_name, challenge.amount)
 	
 	# Get the speaker from the dialogue the dialogue

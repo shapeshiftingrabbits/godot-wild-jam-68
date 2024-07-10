@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="PlayerState" load_steps=3 format=3 uid="uid://05ysg7sletb8"]
 
 [ext_resource type="Script" path="res://scripts/data_scripts/player_state.gd" id="1_12m36"]
-[ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/test/inventory-test.tres" id="1_cdn1g"]
+[ext_resource type="Resource" uid="uid://85ln107b3wtq" path="res://data/inventory.tres" id="1_qrnsx"]
 
 [resource]
 script = ExtResource("1_12m36")
 reputation = 0
 reputation_gain = 1
-inventory = ExtResource("1_cdn1g")
+inventory = ExtResource("1_qrnsx")

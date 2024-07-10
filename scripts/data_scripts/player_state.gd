@@ -9,6 +9,10 @@ class_name PlayerState
 
 @export var inventory: Inventory
 
+var has_current_big_project: bool:
+	get:
+		return current_big_project_ledger != null
+
 var big_project_ledgers: Array[BigProjectLedger]
 
 var current_big_project_ledger: BigProjectLedger

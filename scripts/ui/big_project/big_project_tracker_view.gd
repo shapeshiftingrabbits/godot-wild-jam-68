@@ -24,11 +24,12 @@ func _ready():
 
 
 func present():
-	big_project_ledger = player_state.current_big_project_ledger
-	inventory = player_state.inventory
+	if (player_state.current_big_project_ledger):
+		big_project_ledger = player_state.current_big_project_ledger
+		inventory = player_state.inventory
 
-	initialise()
-	show()
+		initialise()
+		show()
 
 
 func initialise():

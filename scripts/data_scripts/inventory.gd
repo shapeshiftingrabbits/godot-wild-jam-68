@@ -34,4 +34,4 @@ func substract_to_inventory_item( name: String, amount: int):
 
 
 func get_amount_for_item( name: String):
-	return loot_dictionary.get(name)
+	return loot_dictionary.get(name) if loot_dictionary.has(name) else 0
