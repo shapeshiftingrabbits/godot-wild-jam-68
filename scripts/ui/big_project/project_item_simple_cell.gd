@@ -15,6 +15,7 @@ func bind(model: CellModel):
 	super(model)
 	await self.ready
 	_update_layout()
+	model.updated.connect(_update_layout)
 
 
 func _update_layout():

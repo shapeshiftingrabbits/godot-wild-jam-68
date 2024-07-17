@@ -20,7 +20,7 @@ func _create_model_for_inventory_slot(key: String):
 	return InventoryCellModel.new(inventory, key)
 
 
-func _on_inventory_update(key: String, amount: int):
+func _on_inventory_update(key: String, _amount: int):
 	var model = _create_model_for_inventory_slot( key)
 	list_adapter.update_item(model)
 

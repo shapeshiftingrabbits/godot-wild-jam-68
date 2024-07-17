@@ -29,6 +29,12 @@ var is_completed: bool:
 func _init(in_ledger_item: LedgerItem, in_inventory:Inventory):
 	_ledger_item = in_ledger_item
 	_inventory = in_inventory
+	_inventory.inventory_updated.connect(_on_inventory_updated)
+
+
+func _on_inventory_updated(in_item_key: String , amount: int):
+	if (in_item_key == item_key):
+		updated.emit()
 
 
 func deliver_item():

@@ -40,6 +40,7 @@ func present():
 func _is_initialised():
 	return list_adapter != null
 
+
 func initialise():
 	var models: Array = []
 	for ledger in big_project_ledger.ledger:
