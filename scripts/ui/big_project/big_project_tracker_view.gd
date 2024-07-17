@@ -24,13 +24,17 @@ func _ready():
 
 
 func present():
-	if (player_state.current_big_project_ledger):
-		big_project_ledger = player_state.current_big_project_ledger
-		inventory = player_state.inventory
+	if (!_is_initialised()):
+		if (player_state.current_big_project_ledger):
+			big_project_ledger = player_state.current_big_project_ledger
+			inventory = player_state.inventory
 
-		initialise()
-		show()
+			initialise()
+	show()
 
+
+func _is_initialised():
+	return list_adapter != null
 
 func initialise():
 	var models: Array = []
