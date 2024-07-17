@@ -32,6 +32,7 @@ func _update_layout():
 	available_label.text = available_format_string % str(model.available_amount)
 	shipping_layout.visible = !model.is_completed
 	shipped_layout.visible = model.is_completed
+	ship_button.disabled = !model.is_shippable
 	
 
 func _on_ship_button_pressed():

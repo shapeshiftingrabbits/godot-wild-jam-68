@@ -17,6 +17,10 @@ var expected_amount: int:
 	get:
 		return _ledger_item.expected_amount
 
+var current_amount: int:
+	get:
+		return _ledger_item.current_amount
+
 var available_amount: int:
 	get:
 		return _inventory.get_amount_for_item( item_key)
@@ -24,6 +28,11 @@ var available_amount: int:
 var is_completed: bool:
 	get:
 		return _ledger_item.completed()
+		
+
+var is_shippable: bool:
+	get:
+		return (available_amount + current_amount) > expected_amount
 
 
 func _init(in_ledger_item: LedgerItem, in_inventory:Inventory):
