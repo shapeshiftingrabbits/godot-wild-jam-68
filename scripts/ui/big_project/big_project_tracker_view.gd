@@ -18,10 +18,14 @@ class_name BigProjectView
 var list_adapter: ListAdapter
 
 func _ready():
+	_initalise_for_debugging()
+	
+
+func _initalise_for_debugging():
 	if (big_project_ledger):
 		big_project_ledger.init_with_big_project()
 		initialise()
-
+	
 
 func present():
 	if (!_is_initialised()):
