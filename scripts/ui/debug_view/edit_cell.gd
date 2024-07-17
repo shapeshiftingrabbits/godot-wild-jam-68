@@ -21,7 +21,7 @@ func _on_amount_line_edit_text_submitted(new_text):
 
 ## Used to assign the values to the cell after instanciating the packed scene
 func bind( in_model: CellModel):
-	super(in_model)
+	super.bind(in_model)
 	await self.ready
 	_update_layout()
 	inventory_item_changed.disconnect(model._on_inventory_item_updated)

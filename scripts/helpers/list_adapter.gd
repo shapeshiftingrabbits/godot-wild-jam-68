@@ -35,9 +35,6 @@ func _init( in_models: Array,
 func create_cells():
 	for model in models:
 		var cell = add_cell_to_list( model)
-		list_view.add_child( cell)
-		var item_key = model.item_key
-		list_view.set_meta( item_key, cell)
 
 
 ## the model class needs to have a member item_key
@@ -47,6 +44,9 @@ func add_cell_to_list(model: RefCounted):
 	if (!cell.has_method("bind")):
 		printerr("The cell object needs a bind method, see documentation of the ListAdapter.")
 	cell.bind( model)
+	var item_key = model.item_key
+	list_view.set_meta( item_key, cell)
+	list_view.add_child( cell)
 	return cell
 
 
@@ -54,6 +54,7 @@ func update_item( model: RefCounted):
 	var item_key = model.item_key
 	var cell = list_view.get_meta(item_key)
 	if (cell == null):
+		models.push_back(model)
 		add_cell_to_list(model)
 	else:
-		cell.update_amount(model)
+		cell._update_layout()
