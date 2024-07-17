@@ -15,7 +15,7 @@ var has_current_big_project: bool:
 
 var big_project_ledgers: Array[BigProjectLedger]
 
-var current_big_project_ledger: BigProjectLedger
+var current_big_project_ledger: BigProjectLedger = null
 
 func increment_reputation(input_reputation_gain: int = 1):
 	reputation += reputation_gain 

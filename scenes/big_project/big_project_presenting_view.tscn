@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ruc4yqivr3ig"]
+[gd_scene load_steps=6 format=3 uid="uid://ruc4yqivr3ig"]
 
 [ext_resource type="Script" path="res://scripts/ui/big_project/big_project_presenting_view.gd" id="1_oqwes"]
 [ext_resource type="PackedScene" uid="uid://q78eeim4akmx" path="res://scenes/big_project/project_item_simple_cell.tscn" id="2_w1oe1"]
-[ext_resource type="Resource" uid="uid://05ysg7sletb8" path="res://data/player_state.tres" id="3_0k6ir"]
 [ext_resource type="Resource" uid="uid://ce7a2rwoxovbk" path="res://data/test/big_project_ledger_test.tres" id="4_f6mqb"]
 [ext_resource type="Resource" uid="uid://c2hw73d3ek0ty" path="res://data/test/inventory-test.tres" id="5_lhc7r"]
 
@@ -12,7 +11,6 @@ font_size = 32
 [node name="BigProjectPresentingView" type="CanvasLayer"]
 script = ExtResource("1_oqwes")
 cell_template = ExtResource("2_w1oe1")
-player_state = ExtResource("3_0k6ir")
 big_project_ledger = ExtResource("4_f6mqb")
 inventory = ExtResource("5_lhc7r")
 

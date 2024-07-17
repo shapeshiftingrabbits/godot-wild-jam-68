@@ -5,7 +5,6 @@ class_name BigProjectPresentingView
 signal big_project_accepted
 
 @export var cell_template: PackedScene
-@export var player_state: PlayerState
 ## Assign via interface for testing
 @export var big_project_ledger: BigProjectLedger
 ## Assign via interface for testing
@@ -25,11 +24,10 @@ func _ready():
 		initialise()
 
 
-func present(in_big_project_ledger: BigProjectLedger, in_player_state: PlayerState):
+func present(in_big_project_ledger: BigProjectLedger, in_inventory: Inventory):
 	if (in_big_project_ledger):
 		big_project_ledger = in_big_project_ledger
-		player_state = in_player_state
-		inventory = player_state.inventory
+		inventory = in_inventory
 	initialise()
 	show()
 
@@ -49,11 +47,6 @@ func update_layout():
 	reward_description.text = big_project_ledger.reward_description
 
 
-func assign_big_project_to_player():
-	player_state.track_big_project_ledger( big_project_ledger)
-	big_project_accepted.emit()
-
-
 func _on_button_pressed():
-	assign_big_project_to_player()
+	big_project_accepted.emit()
 	hide()
