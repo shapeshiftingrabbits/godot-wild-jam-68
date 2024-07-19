@@ -28,6 +28,7 @@ func init_from_dialogue( big_projects_dialogue: DialogueData):
 	#for ledger_item in ledger:
 		#print(ledger_item.loot_item.name, ledger_item.current_amount, ledger_item.expected_amount)
 
+
 func init_with_big_project():
 	_create_ledger()
 
@@ -49,7 +50,7 @@ func accept_big_project():
 	
 	
 func _check_ledger():
-	is_completed = ledger.all(func (item: LedgerItem): return item.is_completed())
+	is_completed = ledger.all(func (item: LedgerItem): return item.is_completed)
 	if ( is_completed):
 		completed.emit()
 		

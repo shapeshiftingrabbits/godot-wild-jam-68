@@ -27,7 +27,7 @@ var available_amount: int:
 
 var is_completed: bool:
 	get:
-		return _ledger_item.is_completed()
+		return _ledger_item.is_completed
 
 var is_shippable: bool:
 	get:
@@ -46,10 +46,10 @@ func _on_inventory_updated(in_item_key: String , amount: int):
 
 
 func deliver_item():
-	print(expected_amount)
 	var success = _inventory.substract_to_inventory_item( item_key, expected_amount)
 	if (success):
 		_ledger_item.current_amount = expected_amount
+		_inventory.inventory_updated.disconnect(_on_inventory_updated)
 		updated.emit()
 
 
