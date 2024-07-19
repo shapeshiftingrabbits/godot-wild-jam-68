@@ -2,6 +2,8 @@ extends Resource
 
 class_name PlayerState
 
+signal big_project_completed
+
 @export var reputation: int = 0
 
 # TODO This needs to be moved to the mission or crafted object later on
@@ -28,3 +30,4 @@ func track_big_project_ledger(big_project_ledger: BigProjectLedger):
 
 func complete_current_project():
 	current_big_project_ledger = null
+	big_project_completed.emit()
