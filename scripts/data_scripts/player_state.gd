@@ -24,3 +24,7 @@ func increment_reputation(input_reputation_gain: int = 1):
 func track_big_project_ledger(big_project_ledger: BigProjectLedger):
 	current_big_project_ledger = big_project_ledger
 	big_project_ledgers.push_back(big_project_ledger)
+
+
+func complete_current_project():
+	current_big_project_ledger = null

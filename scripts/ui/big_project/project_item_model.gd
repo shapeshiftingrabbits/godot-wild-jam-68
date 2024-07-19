@@ -24,15 +24,14 @@ var current_amount: int:
 var available_amount: int:
 	get:
 		return _inventory.get_amount_for_item( item_key)
-		
+
 var is_completed: bool:
 	get:
-		return _ledger_item.completed()
-		
+		return _ledger_item.is_completed()
 
 var is_shippable: bool:
 	get:
-		return (available_amount + current_amount) > expected_amount
+		return (available_amount + current_amount) >= expected_amount
 
 
 func _init(in_ledger_item: LedgerItem, in_inventory:Inventory):
@@ -47,6 +46,7 @@ func _on_inventory_updated(in_item_key: String , amount: int):
 
 
 func deliver_item():
+	print(expected_amount)
 	var success = _inventory.substract_to_inventory_item( item_key, expected_amount)
 	if (success):
 		_ledger_item.current_amount = expected_amount
